@@ -19,41 +19,16 @@ load_dotenv()
 
 class GssInfo(Enum):
 
-    LGRAM = {
+    trefc = {
         "JSON_KEY_NAME": "sns-auto-430920-08274ad68b41.json",
-        "SHEET_URL": "https://docs.google.com/spreadsheets/d/1cpJkt9llIEYGMzEeYsM15By2BfIVG7GS-m-3oaXw7hI/edit?gid=0#gid=0",
+        "SHEET_URL": "https://docs.google.com/spreadsheets/d/1nNqyDuiU8_Llhh5HO9jTRS0IoI5NOTbqFZSeMmRH2Yc/edit?gid=0#gid=0",
         "WORKSHEET_NAME": "シート1",
 
         # column名
-        "CHECK": "チェック",
-        "NAME": "Name",
         "ID": "ID",
-        "CAPTION": "キャプション",
-        "PASSWORD": "Password",
-        "RESERVE_DAY": "投稿予約日",
-        "RESERVE_TIME": "投稿予約時間",
-        "REEL_URL": "リールURL",
-        "THUMBNAIL_URL": "サムネイルURL",
-        "FIRST_TYPE": "1通目_タイプ",
-        "FIRST_TEXT": "1通目_テキスト_テキスト",
-        "FIRST_PANEL_TITLE": "1通目_パネル_タイトル",
-        "FIRST_PANEL_TEXT": "1通目_パネル_テキスト",
-        "FIRST_PANEL_BUTTON_TEXT": "1通目_パネル_ボタンテキスト",
-        "FIRST_PANEL_URL": "1通目_パネル_URL",
-        "SECOND_CHECK": "2通目_チェック",
-        "SECOND_PANEL_TITLE": "2通目_パネル_タイトル",
-        "SECOND_PANEL_TEXT": "2通目_パネル_テキスト",
-        "SECOND_PANEL_BUTTON_TEXT": "2通目_パネル_ボタンテキスト",
-        "SECOND_PANEL_URL": "2通目_パネル_URL",
-        "THIRD_TIMING": "3通目_タイミング",
-        "THIRD_TEXT": "3通目_テキスト_テキスト",
-        "POST_COMPLETE_DATE": "投稿完了日",
-        "ERROR_DATETIME": "エラー日時",
-        "ERROR_COMMENT": "エラー理由",
-
-        # 選択する
-        "TYPE_TEXT": "テキスト",
-        "TYPE_PANEL": "パネル",
+        "BRAND_NAME": "brand_name",
+        "URL": "url",
+        "CHECK": "check",
     }
 
 
@@ -61,21 +36,35 @@ class GssInfo(Enum):
 # ログイン情報
 
 
-class LoginInfo(Enum):
+class ElementInfo(Enum):
 
-    LGRAM = {
-        "LOGIN_URL": "https://go.lgram.jp/",
-        "HOME_URL": "https://go.lgram.jp/instagram/account-list",
-        "ID_BY": "id",
-        "ID_VALUE": "email_login",
-        "PASS_BY": "id",
-        "PASS_VALUE": "password_login",
-        "BTN_BY": "id",
-        "BTN_VALUE": "btn_submit_login",
-        "LOGIN_AFTER_ELEMENT_BY": "id",
-        "LOGIN_AFTER_ELEMENT_VALUE": "show-action-profile",
+    trefc = {
+        "OPEN_SITE_CHECK_ELEMENT_VALUE": "searchWord",
+        "UL_ELEMENT_VALUE": "p-itemlist",
+        "LI_ELEMENT_VALUE": "p-itemlist_item",
+        "BRAND_NAME_ELEMENT_VALUE": "p-itemlist_brand",
+        "BRAND_PRICE_ELEMENT_VALUE": "p-price2_a",
+        "NEW_ITEM_ELEMENT_VALUE": "p-icon_itemguide1_b",
+        "DATA_ID_ELEMENT_VALUE": "data-id",
+        "LIKE_ELEMENT_VALUE": "p-itemlist_fav",
+        "BRAND_SIZE_ELEMENT_VALUE": "p-itemlist_size",
         "": "",
         "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+        "": "",
+
     }
 
 
@@ -84,7 +73,7 @@ class LoginInfo(Enum):
 
 class ErrCommentInfo(Enum):
 
-    LGRAM = {
+    trefc = {
         # 取得できてない時のコメント
         "ERR_GSS_ID": "[ID]",
         "ERR_GSS_PASS": "[Password]",

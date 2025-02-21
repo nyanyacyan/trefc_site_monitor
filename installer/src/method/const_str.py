@@ -75,13 +75,13 @@ class ErrorComment(Enum):
 
 class SeleniumWait(Enum):
     BY = {
-        "xpath": "By.XPATH",
-        "id": "By.ID",
-        "css": "By.CSS_SELECTOR",
-        "class": "By.CLASS_NAME",
-        "name": "By.NAME",
-        "tag": "By.TAG_NAME",
-        "link_text": "By.LINK_TEXT",
+        "XPATH": "By.XPATH",
+        "ID": "By.ID",
+        "CSS": "By.CSS_SELECTOR",
+        "CLASS": "By.CLASS_NAME",
+        "NAME": "By.NAME",
+        "TAG": "By.TAG_NAME",
+        "LINK_TEXT": "By.LINK_TEXT",
     }
 
 

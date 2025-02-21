@@ -8,6 +8,14 @@ import os
 import concurrent.futures
 from typing import Dict
 from datetime import datetime
+from selenium.common.exceptions import ElementClickInterceptedException, ElementNotInteractableException, NoSuchElementException, TimeoutException, WebDriverException
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 # 自作モジュール
 from method.base.utils.logger import Logger
@@ -25,235 +33,170 @@ from method.base.spreadsheet.err_checker_write import GssCheckerErrWrite
 from method.base.selenium.loginWithId import SingleSiteIDLogin
 from method.base.utils.popup import Popup
 from method.base.selenium.click_element import ClickElement
-from selenium.common.exceptions import ElementClickInterceptedException, ElementNotInteractableException, NoSuchElementException, TimeoutException, WebDriverException
+from method.base.selenium.driverWait import Wait
+from method.base.utils.fileWrite import
 
 # flow
-from method.prepare_flow import PrepareFlow
-from method.auto_post_flow import AutoPostFlow
-from method.auto_tag_management import TagManagementFlow
-from method.step_delivery_flow import StepDeliveryFlow
-from method.auto_reply import AutoReplyFlow
+
 
 # const
-from method.const_element import GssInfo, LoginInfo, ErrCommentInfo, PopUpComment, Post
+from method.const_element import GssInfo, ElementInfo
+from method.const_str import SeleniumWait
 
 deco = Decorators()
 
 # ----------------------------------------------------------------------------------
 # **********************************************************************************
+# **********************************************************************************
 # 一連の流れ
 
-
-class FlowProcess:
+class Flow:
     def __init__(self):
         # logger
         self.getLogger = Logger()
         self.logger = self.getLogger.getLogger()
 
+        # timestamp
+        self.timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+
         # インスタンス
-        self.time_manager = TimeManager()
         self.gss_read = GetDataGSSAPI()
         self.gss_write = GssWrite()
-        self.drive_download = GoogleDriveDownload()
-        self.select_cell = GssSelectCell()
-        self.gss_check_err_write = GssCheckerErrWrite()
-        self.popup = Popup()
 
-
-
-        self.timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+        # 各Flow
+        self.single_flow = SingleProcessFlow()
 
         # const
-        self.const_gss_info = GssInfo.LGRAM.value
-        self.const_login_info = LoginInfo.LGRAM.value
-        self.const_err_cmt_dict = ErrCommentInfo.LGRAM.value
-        self.popup_cmt = PopUpComment.LGRAM.value
+        self.const_gss_info = GssInfo.trefc.value
+        self.const_element_info = ElementInfo.trefc.value
+        self.const_by = SeleniumWait.BY.value
 
 
-    ####################################################################################
-    # ----------------------------------------------------------------------------------
-    # 各メソッドをまとめる
-
-    def parallel_process(self, max_workers: int = 3):
-        try:
-            # スプシにアクセス（Worksheet指定）
-            df = self.gss_read._get_df_gss_url(gss_info=self.const_gss_info)
-            df_filtered = df[df["チェック"] == "TRUE"]
-
-            self.logger.debug(f'DataFrame: {df_filtered.head()}')
-
-            # 並列処理
-            with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
-                futures = []
-
-                for i, row in df_filtered.iterrows():
-                    row_num = i + 1
-                    get_gss_row_dict = row.to_dict()
-
-                    # 完了通知column名
-                    complete_datetime_col_name = self.const_gss_info["POST_COMPLETE_DATE"]
-
-                    # エラーcolumn名
-                    err_datetime_col_name = self.const_gss_info["ERROR_DATETIME"]
-                    err_cmt_col_name = self.const_gss_info["ERROR_COMMENT"]
-
-                    complete_cell = self.select_cell.get_cell_address(
-                        gss_row_dict=get_gss_row_dict,
-                        col_name=complete_datetime_col_name,
-                        row_num=row_num,
-                    )
-
-                    err_datetime_cell = self.select_cell.get_cell_address(
-                        gss_row_dict=get_gss_row_dict,
-                        col_name=err_datetime_col_name,
-                        row_num=row_num,
-                    )
-                    err_cmt_cell = self.select_cell.get_cell_address(
-                        gss_row_dict=get_gss_row_dict,
-                        col_name=err_cmt_col_name,
-                        row_num=row_num,
-                    )
-
-                    # `SingleProcess` を **新しく作成**
-                    single_flow_instance = SingleProcess()
-
-                    future = executor.submit(
-                        single_flow_instance._single_process,
-                        gss_row_data=get_gss_row_dict,
-                        gss_info=self.const_gss_info,
-                        complete_cell=complete_cell,
-                        err_datetime_cell=err_datetime_cell,
-                        err_cmt_cell=err_cmt_cell,
-                        login_info=self.const_login_info,
-                    )
-
-                    futures.append(future)
-
-                concurrent.futures.wait(futures)
-
-            self.popup.popupCommentOnly(
-                popupTitle=self.popup_cmt["ALL_COMPLETE_TITLE"],
-                comment=self.popup_cmt["ALL_COMPLETE_COMMENT"],
-            )
-
-        except Exception as e:
-            self.logger.error(f'{self.__class__.__name__} 処理中にエラーが発生: {e}')
-
-
-
-    # ----------------------------------------------------------------------------------
 # **********************************************************************************
+    # ----------------------------------------------------------------------------------
+
+    def flow(self):
+
+        # スプシにアクセス（Worksheet指定）
+        df = self.gss_read._get_df_gss_url(gss_info=self.const_gss_info)
+        df_filtered = df[df[self.const_gss_info['CHECK']] == "TRUE"]
+
+        self.logger.debug(f'DataFrame: {df_filtered.head()}')
+
+        for i, row in df_filtered.iterrows():
+            row_num = i + 1
+            get_gss_row_dict = row.to_dict()
+
+            self.single_flow.single_process(gss_info=get_gss_row_dict)
+
+
+    # ----------------------------------------------------------------------------------
+
 # 一連の流れ
 
-class SingleProcess:
+class SingleProcessFlow:
     def __init__(self):
+        # logger
         self.getLogger = Logger()
         self.logger = self.getLogger.getLogger()
+
+        # timestamp
         self.timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
 
+        # インスタンス
+        self.gss_read = GetDataGSSAPI()
+        self.gss_write = GssWrite()
+
+        # 各Flow
+
         # const
-        self.const_gss_info = GssInfo.LGRAM.value
-        self.const_login_info = LoginInfo.LGRAM.value
-        self.const_post = Post.LGRAM.value
-        self.const_err_cmt_dict = ErrCommentInfo.LGRAM.value
-        self.popup_cmt = PopUpComment.LGRAM.value
+        self.const_gss_info = GssInfo.trefc.value
+        self.const_element_info = ElementInfo.trefc.value
+        self.const_by = SeleniumWait.BY.value
 
 # **********************************************************************************
     # ----------------------------------------------------------------------------------
 
 
-    def _single_process(self, gss_row_data: Dict, gss_info: Dict, complete_cell: str, err_datetime_cell: str, err_cmt_cell: str, login_info: Dict):
-        """ 各プロセスを実行する """
-
-        # ✅ Chrome の起動をここで行う
-        self.chromeManager = ChromeManager()
-        self.chrome = self.chromeManager.flowSetupChrome()
-
+    def single_process(self, gss_info: Dict):
         try:
-            # インスタンスの作成 (chrome を引数に渡す)
-            self.login = SingleSiteIDLogin(chrome=self.chrome)
-            self.random_sleep = SeleniumBasicOperations(chrome=self.chrome)
-            self.get_element = GetElement(chrome=self.chrome)
-            self.selenium = SeleniumBasicOperations(chrome=self.chrome)
-            self.gss_read = GetDataGSSAPI()
-            self.gss_write = GssWrite()
-            self.drive_download = GoogleDriveDownload()
-            self.select_cell = GssSelectCell()
-            self.gss_check_err_write = GssCheckerErrWrite()
-            self.popup = Popup()
+            # chrome
+            self.chromeManager = ChromeManager()
+            self.chrome = self.chromeManager.flowSetupChrome()
+
+            # インスタンス
             self.click_element = ClickElement(chrome=self.chrome)
+            self.get_element = GetElement(chrome=self.chrome)
+            self.element_wait = Wait(chrome=self.chrome)
+            self.random_sleep = SeleniumBasicOperations(chrome=self.chrome)
+            self.selenium = SeleniumBasicOperations(chrome=self.chrome)
 
-            # 各Flow
-            self.prepare_flow = PrepareFlow(chrome=self.chrome)
-            self.auto_post_flow = AutoPostFlow(chrome=self.chrome)
-            self.tag_management_flow = TagManagementFlow(chrome=self.chrome)
-            self.step_delivery_flow = StepDeliveryFlow(chrome=self.chrome)
-            self.auto_reply_flow = AutoReplyFlow(self.chrome)
+            self.logger.debug(f'ID: {gss_info['id']}\nブランド名: {gss_info['brand_name']}\nurl: {gss_info['url']}')
 
-            # ✅ ここから通常の処理
-            image_path, movie_path = self.prepare_flow.prepare_process(
-                gss_row_data=gss_row_data, gss_info=gss_info, err_datetime_cell=err_datetime_cell, err_cmt_cell=err_cmt_cell
-            )
+            # サイトを開く
+            self.chrome.get(gss_info['url'])
 
-            self.login.flow_login_id_input_gui(
-                login_info=login_info, id_text=gss_row_data[self.const_gss_info["ID"]], pass_text=gss_row_data[self.const_gss_info["PASSWORD"]], gss_info=gss_info, err_datetime_cell=err_datetime_cell, err_cmt_cell=err_cmt_cell
-            )
 
-            # アカウントをクリック
-            self.click_element.clickElement( by=self.const_post["SELECT_ACCOUNT_BY"], value=self.const_post["SELECT_ACCOUNT_VALUE"] )
-            self.logger.warning(f'{self.__class__.__name__} アカウント名をクリック: 実施済み')
-            self.selenium._random_sleep(3, 5)
+            # サイトが開いているかを確認
+            self.element_wait.canWaitDom(by=self.const_by['ID'], value=self.const_element_info['OPEN_SITE_CHECK_ELEMENT_VALUE'])
 
-            try:
-                # Facebookのアカウント確認がはいったことを想定
-                facebook_login = self.get_element.getElement(value=self.const_post["IF_FACEBOOK_VALUE"])
+            # display,noneの解除
+            self.get_element.unlockDisplayNone()
 
-                if facebook_login:
-                    facebook_login.click()
-                    facebook_comment = "Facebookのログインができておりません。"
-                    self.logger.error(f'{self.__class__.__name__} facebook_comment: {facebook_comment}')
-                    # エラータイムスタンプ
-                    self.gss_write.write_data_by_url(gss_info=gss_info, cell=err_datetime_cell, input_data=self.timestamp)
+            # テーブルの取得
+            ul_elements = self.element_wait.canWaitDom(by=self.const_by['CSS'], value=self.const_element_info['UL_ELEMENT_VALUE'])
+            self.logger.info(f'ul_elements: {ul_elements}')
 
-                    # エラーコメント
-                    self.gss_write.write_data_by_url(gss_info=gss_info, cell=err_cmt_cell, input_data=facebook_comment)
-                    raise Exception(facebook_comment)
+            # １つ１つのアイテムを取得
+            li_elements = ul_elements.find_elements(self.const_by['CSS'], self.const_element_info['LI_ELEMENT_VALUE'])
+            self.logger.info(f"liの数: {len(li_elements)}")
 
-            except ElementNotInteractableException:
-                self.logger.info(f'Facebookはログイン状態')
+            # NEWがついているものに絞り込む
+            new_icon = [li for li in li_elements if li.find_elements(self.const_by['CSS'], self.const_element_info['NEW_ITEM_ELEMENT_VALUE'])]
 
-            # 自動投稿
-            self.auto_post_flow.process(gss_row_data, gss_info, err_datetime_cell, err_cmt_cell)
-            self.tag_management_flow.process(gss_info, err_datetime_cell, err_cmt_cell)
+            item_data_list = []
+            if new_icon:
 
-            # ステップ配信
-            self.step_delivery_flow.first_process(gss_row_data, gss_info, err_datetime_cell, err_cmt_cell)
-            self.step_delivery_flow.second_process(gss_row_data, gss_info, err_datetime_cell, err_cmt_cell)
-            self.step_delivery_flow.third_process(gss_row_data, gss_info, err_datetime_cell, err_cmt_cell)
+                # item_infoを取得
+                for li in new_icon:
+                    item = {
+                        "id" : gss_info['id'],  # ブランド名の取得
+                        "brand_name" : li.find_element(self.const_by['CSS'], self.const_element_info['BRAND_NAME_ELEMENT_VALUE']).text,  # サイズの取得
+                        "size" : li.find_element(self.const_by['CSS'], self.const_element_info['BRAND_SIZE_ELEMENT_VALUE']).text,  # サイズの取得
+                        "price" : li.find_element(self.const_by['CSS'], self.const_element_info['BRAND_PRICE_ELEMENT_VALUE']),  # 価格取得
+                        "link" : li.find_element(self.const_by['TAG'], "a").text,  # リンク
+                    }
+                    item_data_list.append(item)
+                    self.logger.info(f'{gss_info['id']} をリストに追加')
+            else:
+                self.logger.warning(f'{self.__class__.__name__}new_iconがありません: {new_icon}')
 
-            # 自動応答
-            result_bool = self.auto_reply_flow.process(gss_row_data, gss_info, err_datetime_cell, err_cmt_cell)
+            self.logger.critical(f'{self.__class__.__name__} item_data_list: {item_data_list}')
 
-            if result_bool:
-                self.gss_write.write_data_by_url(gss_info, complete_cell, input_data=str(self.timestamp))
+            # 過去のpickleからデータを取得
 
-            self.logger.info(f'{gss_row_data[self.const_gss_info["NAME"]]}: 処理完了')
+
+            # 突合する
+
+            # 差分のリストを作成（新商品の入荷）
+
+            # pickleに保存する
+
+            # メッセージ用に変換する
+
+            # Discordにて送る
+
+
+
 
         except TimeoutError:
             timeout_comment = "ログインでreCAPTCHA処理にが長引いてしまったためエラー"
-            self.logger.error(f'{self.__class__.__name__} {timeout_comment}')
-            # エラータイムスタンプ
-            self.gss_write.write_data_by_url(gss_info=gss_info, cell=err_datetime_cell, input_data=self.timestamp)
-
-            # エラーコメント
-            self.gss_write.write_data_by_url(gss_info=gss_info, cell=err_cmt_cell, input_data=timeout_comment)
 
         except Exception as e:
             self.logger.error(f'{self.__class__.__name__} エラー: {e}')
 
         finally:
-            self._delete_file(image_path)
-            self._delete_file(movie_path)
+
             # ✅ Chrome を終了
             self.chrome.quit()
 
@@ -274,6 +217,6 @@ class SingleProcess:
 
 if __name__ == "__main__":
 
-    test_flow = FlowProcess()
+    test_flow = SingleProcessFlow()
     # 引数入力
-    test_flow.parallel_process()
+    test_flow.single_process()

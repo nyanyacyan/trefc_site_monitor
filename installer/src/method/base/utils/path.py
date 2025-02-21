@@ -321,6 +321,17 @@ class BaseToPath:
         return FilePath
 
     # ----------------------------------------------------------------------------------
+    # Input > pickle > file
+
+    def _get_pickle_path(self, sub_dir_name: str, file_name: str, extension: str='.pkl'):
+        inputDataPath = self.getInputDataPath()
+        chrome_dir_path = inputDataPath / "pickles" / sub_dir_name / file_name
+        self.isDirExists(path=chrome_dir_path)
+        self.logger.debug(f'MacのDriverを選択: {chrome_dir_path}')
+        return str(chrome_dir_path)
+
+
+    # ----------------------------------------------------------------------------------
     # Result > SubDir > File
 
     def getResultSubDirFilePath(self, subDirName: str, fileName: str, extension: str):

@@ -6,10 +6,14 @@
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-
+from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 # 自作モジュール
 from method.base.utils.logger import Logger
+
+from method.const_str import SeleniumWait
 
 
 # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
@@ -24,6 +28,9 @@ class Wait:
 
         # chrome
         self.chrome = chrome
+
+        # const
+        self.const_by = SeleniumWait.BY.value
 
 
     # ----------------------------------------------------------------------------------
@@ -61,12 +68,12 @@ class Wait:
     # ----------------------------------------------------------------------------------
     # DOM上に存在するまで待機
 
-    def canWaitDom(self, by: str, value: str, timeout: int = 10):
-        if WebDriverWait(self.chrome, timeout).until(
+    def canWaitDom(self, value: str, by: str = 'By.XPATH', timeout: int = 20) -> WebElement:# -> WebElements:# -> Any:
+        element = WebDriverWait(self.chrome, timeout).until(
             EC.presence_of_element_located((by, value))
-        ):
-            self.logger.info(f"指定の要素のDOMを確認できました")
-        return
+        )
+        self.logger.info(f"指定の要素のDOMを確認できました")
+        return element
 
 
     # ----------------------------------------------------------------------------------

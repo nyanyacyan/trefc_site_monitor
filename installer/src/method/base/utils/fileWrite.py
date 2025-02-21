@@ -607,17 +607,26 @@ class LimitSabDirFileWrite:
     # ? picklesのディレクトリに入れたい場合にはoverrideさせていれる
 
     # @decoInstance.fileRetryAction(maxRetry=2, delay=2)
-    def writeSabDirToPickle(
-        self,
-        data: Any,
-        subDirName: str = SubDir.pickles.value,
-        extension: str = Extension.pickle.value,
-    ):
-        filePath = self.path.getResultSubDirFilePath(
-            subDirName=subDirName, fileName=self.currentDate, extension=extension
-        )
+    def writeSabDirToPickle( self, data: Any, subDirName: str = SubDir.pickles.value, extension: str = Extension.pickle.value, ):
+        filePath = self.path.getResultSubDirFilePath( subDirName=subDirName, fileName=self.currentDate, extension=extension )
         self.logger.debug(f"data: {data}")
         if data and subDirName:
+            with open(filePath, "wb") as file:
+                pickle.dump(data, file)
+
+            self._existsCheck(filePath=filePath)
+            self.cleanWriteFiles(filePath=filePath, extension=extension)
+
+
+# ----------------------------------------------------------------------------------
+    # pickle
+    # ? picklesのディレクトリに入れたい場合にはoverrideさせていれる
+
+    # @decoInstance.fileRetryAction(maxRetry=2, delay=2)
+    def writeSabDirInputToPickle( self, data: Any, sub_dir_name: str, file_name: str, extension: str = Extension.pickle.value, ):
+        filePath = self.path._get_pickle_path( sub_dir_name=sub_dir_name, file_name=file_name, extension=extension )
+        self.logger.debug(f"data: {data}")
+        if data and sub_dir_name:
             with open(filePath, "wb") as file:
                 pickle.dump(data, file)
 
