@@ -1,0 +1,560 @@
+2025-02-18 20:20:10,805 - INFO - 引数:
+args=(<method.base.spreadsheet.spreadsheetRead.GetDataGSSAPI object at 0x15aabc7f0>,), kwargs={'gss_info': {'JSON_KEY_NAME': 'sns-auto-430920-08274ad68b41.json', 'SHEET_URL': 'https://docs.google.com/spreadsheets/d/1cpJkt9llIEYGMzEeYsM15By2BfIVG7GS-m-3oaXw7hI/edit?gid=0#gid=0', 'WORKSHEET_NAME': 'シート1', 'CHECK': 'チェック', 'NAME': 'Name', 'ID': 'ID', 'CAPTION': 'キャプション', 'PASSWORD': 'Password', 'RESERVE_DAY': '投稿予約日', 'RESERVE_TIME': '投稿予約時間', 'REEL_URL': 'リールURL', 'THUMBNAIL_URL': 'サムネイルURL', 'FIRST_TYPE': '1通目_タイプ', 'FIRST_TEXT': '1通目_テキスト_テキスト', 'FIRST_PANEL_TITLE': '1通目_パネル_タイトル', 'FIRST_PANEL_TEXT': '1通目_パネル_テキスト', 'FIRST_PANEL_BUTTON_TEXT': '1通目_パネル_ボタンテキスト', 'FIRST_PANEL_URL': '1通目_パネル_URL', 'SECOND_CHECK': '2通目_チェック', 'SECOND_PANEL_TITLE': '2通目_パネル_タイトル', 'SECOND_PANEL_TEXT': '2通目_パネル_テキスト', 'SECOND_PANEL_BUTTON_TEXT': '2通目_パネル_ボタンテキスト', 'SECOND_PANEL_URL': '2通目_パネル_URL', 'THIRD_TIMING': '3通目_タイミング', 'THIRD_TEXT': '3通目_テキスト_テキスト', 'POST_COMPLETE_DATE': '投稿完了日', 'ERROR_DATETIME': 'エラー日時', 'ERROR_COMMENT': 'エラー理由', 'TYPE_TEXT': 'テキスト', 'TYPE_PANEL': 'パネル'}}
+2025-02-18 20:20:10,805 - INFO - ********** _get_df_gss_url start 1回目 **********
+2025-02-18 20:20:10,806 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:10,806 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:20:10,806 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:20:13,528 - DEBUG - 利用可能なワークシート: [<Worksheet 'シート1' id:0>]
+2025-02-18 20:20:15,886 - DEBUG - ワークシート全データ: [['当日完了フラグ', 'エラーフラグ', 'Name', 'チェック', 'ID', 'Password', '投稿予約日', '投稿予約時間', 'キャプション', 'リールURL', 'サムネイルURL', '1通目_タイプ', '1通目_テキスト_テキスト', '1通目_パネル_タイトル', '1通目_パネル_テキスト', '1通目_パネル_ボタンテキスト', '1通目_パネル_URL', '2通目_チェック', '2通目_パネル_タイトル', '2通目_パネル_テキスト', '2通目_パネル_ボタンテキスト', '2通目_パネル_URL', '3通目_タイミング', '3通目_テキスト_テキスト', '投稿完了日', 'エラー日時', 'エラー理由', '2025/02/18'], ['', 'エラー発生', 'lgram_1', 'TRUE', 'tanakajiro@tatsu.uk', 'kyoyu0000', '2025/02/28', '13:00', '2025年副業で稼ぐなら↓\n\n20個以上の副業を失敗してきた僕ですが\nAIとインスタを使った方法でなら\nなんとか成功を収めることができています\n\n僕に足りなかったのは圧倒的に時間⏳\nやれば成功するノウハウも時間が\n足りずに手をつけられない…\n\nやる気はあるのに会社が\n僕の時間を消費してくる\n\nだからAIで効率化を考えて\n稼げると話題のインスタと\n組み合わせた結果…\n\n僕は年収1000万を達成できた\n他の投稿も参考になるかも\n→ @ziputo_ai\n\n#chatgpt4\n#AIツール\n#フリーランス\n#在宅ワーク\n#生成AI\n#インスタ初心者\n#インスタ運用\n#SNS運用', 'https://drive.google.com/file/d/1to8tPP1fbjd4uAB-Tyd-TuEsiF938AYl/view', 'https://drive.google.com/file/d/1AiP6Czhd51PQD57NgY1dZ6uMZs-PJHbe/view', 'テキスト', 'コメントいただきありがとうございます！\n\nこちらがプレゼントになります！', '', '', '', '', 'TRUE', 'また、月10万稼ぐ方法はこちらの動画にまとめてますのでご覧ください！', '', '動画はこちら', 'https://utage-system.com/page/lBfmESRmRTCB?fbclid=PAZXh0bgNhZW0CMTEAAaaPY8Vhox12E3XTF7i_WTmJEYssjv6fIGutMlhCk0YXIInvkwqTH_Xx8Nw_aem_sHIOpRLrlf49p7v3fOq70g', '7', '[FRIEND_INFO_system_name]さんコメントありがとうございます！\n[FRIEND_INFO_system_name]さんは副業に興味があってこれから勉強を始めていきたいという感じなのでしょうか？☺️', '', '2025-02-17 10:14', 'Facebookのログインができておりません。', ''], ['書込完了', '', 'lgram_2', 'TRUE', 'aihakase@tatsu.uk', 'kyoyu0000', '2025/02/28', '13:00', 'テスト', 'https://drive.google.com/file/d/1ewdehsIeVw_6xspsK5lKStdklxQ70xP3/view', 'https://drive.google.com/file/d/1SmME7KHrH5pP-LrwslUQtE38JF1wmHCw/view', 'パネル', '', 'こちらから副業の始めた方をまとめた動画を見れます', '1234', '動画はこちら👀', 'https://utage-system.com/page/lBfmESRmRTCB?fbclid=PAZXh0bgNhZW0CMTEAAaaPY8Vhox12E3XTF7i_WTmJEYssjv6fIGutMlhCk0YXIInvkwqTH_Xx8Nw_aem_sHIOpRLrlf49p7v3fOq70g', 'FALSE', '', '', '', '', '7', '[FRIEND_INFO_system_name]さんコメントありがとうございます！\n[FRIEND_INFO_system_name]さんは副業に興味があってこれから勉強を始めていきたいという感じなのでしょうか？☺️', '2025-02-17 10:14', '', '', ''], ['書込完了', '', 'lgram_3', 'TRUE', 'aihakase@tatsu.uk', 'kyoyu0000', '2025/03/28', '13:00', '2025年副業で稼ぐなら↓\n\n20個以上の副業を失敗してきた僕ですが\nAIとインスタを使った方法でなら\nなんとか成功を収めることができています\n\n僕に足りなかったのは圧倒的に時間⏳\nやれば成功するノウハウも時間が\n足りずに手をつけられない…\n\nやる気はあるのに会社が\n僕の時間を消費してくる\n\nだからAIで効率化を考えて\n稼げると話題のインスタと\n組み合わせた結果…\n\n僕は年収1000万を達成できた\n他の投稿も参考になるかも\n→ @ziputo_ai\n\n#chatgpt4\n#AIツール\n#フリーランス\n#在宅ワーク\n#生成AI\n#インスタ初心者\n#インスタ運用\n#SNS運用', 'https://drive.google.com/file/d/1ewdehsIeVw_6xspsK5lKStdklxQ70xP3/view', 'https://drive.google.com/file/d/1SmME7KHrH5pP-LrwslUQtE38JF1wmHCw/view', 'テキスト', 'コメントいただきありがとうございます！\n\nこちらがプレゼントになります！', '', '', '', '', 'TRUE', 'また、月10万稼ぐ方法はこちらの動画にまとめてますのでご覧ください！', '', '動画はこちら', 'https://utage-system.com/page/lBfmESRmRTCB?fbclid=PAZXh0bgNhZW0CMTEAAaaPY8Vhox12E3XTF7i_WTmJEYssjv6fIGutMlhCk0YXIInvkwqTH_Xx8Nw_aem_sHIOpRLrlf49p7v3fOq70g', '7', '[FRIEND_INFO_system_name]さんコメントありがとうございます！\n[FRIEND_INFO_system_name]さんは副業に興味があってこれから勉強を始めていきたいという感じなのでしょうか？☺️', '2025-02-17 10:14', '', '', ''], ['書込完了', '', 'lgram_3', 'TRUE', 'aihakase@tatsu.uk', 'kyoyu0000', '2025/03/28', '13:00', '2025年副業で稼ぐなら↓\n\n20個以上の副業を失敗してきた僕ですが\nAIとインスタを使った方法でなら\nなんとか成功を収めることができています\n\n僕に足りなかったのは圧倒的に時間⏳\nやれば成功するノウハウも時間が\n足りずに手をつけられない…\n\nやる気はあるのに会社が\n僕の時間を消費してくる\n\nだからAIで効率化を考えて\n稼げると話題のインスタと\n組み合わせた結果…\n\n僕は年収1000万を達成できた\n他の投稿も参考になるかも\n→ @ziputo_ai\n\n#chatgpt4\n#AIツール\n#フリーランス\n#在宅ワーク\n#生成AI\n#インスタ初心者\n#インスタ運用\n#SNS運用', 'https://drive.google.com/file/d/1ewdehsIeVw_6xspsK5lKStdklxQ70xP3/view', 'https://drive.google.com/file/d/1SmME7KHrH5pP-LrwslUQtE38JF1wmHCw/view', 'テキスト', 'コメントいただきありがとうございます！\n\nこちらがプレゼントになります！', '', '', '', '', 'TRUE', 'また、月10万稼ぐ方法はこちらの動画にまとめてますのでご覧ください！', '', '動画はこちら', 'https://utage-system.com/page/lBfmESRmRTCB?fbclid=PAZXh0bgNhZW0CMTEAAaaPY8Vhox12E3XTF7i_WTmJEYssjv6fIGutMlhCk0YXIInvkwqTH_Xx8Nw_aem_sHIOpRLrlf49p7v3fOq70g', '7', '[FRIEND_INFO_system_name]さんコメントありがとうございます！\n[FRIEND_INFO_system_name]さんは副業に興味があってこれから勉強を始めていきたいという感じなのでしょうか？☺️', '2025-02-17 10:14', '', '', '']]
+2025-02-18 20:20:16,160 - INFO - スプシ読み込み完了 :
+  当日完了フラグ エラーフラグ     Name  チェック                   ID   Password  ... 3通目_タイミング                                      3通目_テキスト_テキスト             投稿完了日             エラー日時                    エラー理由 2025/02/18
+0          エラー発生  lgram_1  TRUE  tanakajiro@tatsu.uk  kyoyu0000  ...         7  [FRIEND_INFO_system_name]さんコメントありがとうございます！\n[F...                    2025-02-17 10:14  Facebookのログインができておりません。           
+1    書込完了         lgram_2  TRUE    aihakase@tatsu.uk  kyoyu0000  ...         7  [FRIEND_INFO_system_name]さんコメントありがとうございます！\n[F...  2025-02-17 10:14                                                      
+2    書込完了         lgram_3  TRUE    aihakase@tatsu.uk  kyoyu0000  ...         7  [FRIEND_INFO_system_name]さんコメントありがとうございます！\n[F...  2025-02-17 10:14                                                      
+3    書込完了         lgram_3  TRUE    aihakase@tatsu.uk  kyoyu0000  ...         7  [FRIEND_INFO_system_name]さんコメントありがとうございます！\n[F...  2025-02-17 10:14                                                      
+
+[4 rows x 28 columns]
+2025-02-18 20:20:16,192 - DEBUG - DataFrame:   当日完了フラグ エラーフラグ     Name  チェック                   ID   Password  ... 3通目_タイミング                                      3通目_テキスト_テキスト             投稿完了日             エラー日時                    エラー理由 2025/02/18
+0          エラー発生  lgram_1  TRUE  tanakajiro@tatsu.uk  kyoyu0000  ...         7  [FRIEND_INFO_system_name]さんコメントありがとうございます！\n[F...                    2025-02-17 10:14  Facebookのログインができておりません。           
+1    書込完了         lgram_2  TRUE    aihakase@tatsu.uk  kyoyu0000  ...         7  [FRIEND_INFO_system_name]さんコメントありがとうございます！\n[F...  2025-02-17 10:14                                                      
+2    書込完了         lgram_3  TRUE    aihakase@tatsu.uk  kyoyu0000  ...         7  [FRIEND_INFO_system_name]さんコメントありがとうございます！\n[F...  2025-02-17 10:14                                                      
+3    書込完了         lgram_3  TRUE    aihakase@tatsu.uk  kyoyu0000  ...         7  [FRIEND_INFO_system_name]さんコメントありがとうございます！\n[F...  2025-02-17 10:14                                                      
+
+[4 rows x 28 columns]
+2025-02-18 20:20:16,199 - DEBUG - 投稿完了日 は左から 25 列目 (Y) にあります。
+2025-02-18 20:20:16,199 - DEBUG - 指定のアドレス: Y2
+2025-02-18 20:20:16,199 - DEBUG - エラー日時 は左から 26 列目 (Z) にあります。
+2025-02-18 20:20:16,199 - DEBUG - 指定のアドレス: Z2
+2025-02-18 20:20:16,199 - DEBUG - エラー理由 は左から 27 列目 (AA) にあります。
+2025-02-18 20:20:16,199 - DEBUG - 指定のアドレス: AA2
+2025-02-18 20:20:16,202 - DEBUG - 投稿完了日 は左から 25 列目 (Y) にあります。
+2025-02-18 20:20:16,202 - DEBUG - 指定のアドレス: Y3
+2025-02-18 20:20:16,202 - DEBUG - エラー日時 は左から 26 列目 (Z) にあります。
+2025-02-18 20:20:16,202 - DEBUG - 指定のアドレス: Z3
+2025-02-18 20:20:16,202 - DEBUG - エラー理由 は左から 27 列目 (AA) にあります。
+2025-02-18 20:20:16,202 - DEBUG - 指定のアドレス: AA3
+2025-02-18 20:20:16,204 - DEBUG - 投稿完了日 は左から 25 列目 (Y) にあります。
+2025-02-18 20:20:16,204 - DEBUG - 指定のアドレス: Y4
+2025-02-18 20:20:16,204 - DEBUG - エラー日時 は左から 26 列目 (Z) にあります。
+2025-02-18 20:20:16,204 - DEBUG - 指定のアドレス: Z4
+2025-02-18 20:20:16,204 - DEBUG - エラー理由 は左から 27 列目 (AA) にあります。
+2025-02-18 20:20:16,204 - DEBUG - 指定のアドレス: AA4
+2025-02-18 20:20:16,205 - INFO - ********** flowSetupChrome start **********
+2025-02-18 20:20:16,205 - DEBUG - 引数:
+args=(<method.base.selenium.chrome.ChromeManager object at 0x15aabff10>,), kwargs={}
+2025-02-18 20:20:16,206 - DEBUG - 投稿完了日 は左から 25 列目 (Y) にあります。
+2025-02-18 20:20:16,207 - DEBUG - 指定のアドレス: Y5
+2025-02-18 20:20:16,207 - DEBUG - エラー日時 は左から 26 列目 (Z) にあります。
+2025-02-18 20:20:16,207 - DEBUG - 指定のアドレス: Z5
+2025-02-18 20:20:16,207 - DEBUG - エラー理由 は左から 27 列目 (AA) にあります。
+2025-02-18 20:20:16,207 - DEBUG - 指定のアドレス: AA5
+2025-02-18 20:20:16,208 - WARNING - インストールされた ChromeDriver バージョン: Selenium Manager is managing the ChromeDriver.
+2025-02-18 20:20:16,209 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:16,210 - DEBUG - uBlock-Origin.crx 発見
+2025-02-18 20:20:16,210 - DEBUG - 拡張機能のあるPath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/chrome/uBlock-Origin.crx
+2025-02-18 20:20:16,211 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:16,211 - DEBUG - hlifkpholllijblknnmbfagnkjneagid.crx 発見
+2025-02-18 20:20:16,212 - INFO - ********** flowSetupChrome start **********
+2025-02-18 20:20:16,212 - DEBUG - 拡張機能のあるPath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/chrome/hlifkpholllijblknnmbfagnkjneagid.crx
+2025-02-18 20:20:16,212 - DEBUG - 引数:
+args=(<method.base.selenium.chrome.ChromeManager object at 0x15aabed10>,), kwargs={}
+2025-02-18 20:20:16,213 - INFO - ********** flowSetupChrome start **********
+2025-02-18 20:20:16,213 - DEBUG - 引数:
+args=(<method.base.selenium.chrome.ChromeManager object at 0x15ab19c00>,), kwargs={}
+2025-02-18 20:20:16,213 - WARNING - インストールされた ChromeDriver バージョン: Selenium Manager is managing the ChromeDriver.
+2025-02-18 20:20:16,214 - WARNING - インストールされた ChromeDriver バージョン: Selenium Manager is managing the ChromeDriver.
+2025-02-18 20:20:16,214 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:16,214 - DEBUG - uBlock-Origin.crx 発見
+2025-02-18 20:20:16,214 - DEBUG - 拡張機能のあるPath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/chrome/uBlock-Origin.crx
+2025-02-18 20:20:16,215 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:16,215 - DEBUG - uBlock-Origin.crx 発見
+2025-02-18 20:20:16,215 - DEBUG - 拡張機能のあるPath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/chrome/uBlock-Origin.crx
+2025-02-18 20:20:16,216 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:16,216 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:16,216 - DEBUG - hlifkpholllijblknnmbfagnkjneagid.crx 発見
+2025-02-18 20:20:16,216 - DEBUG - 拡張機能のあるPath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/chrome/hlifkpholllijblknnmbfagnkjneagid.crx
+2025-02-18 20:20:16,217 - DEBUG - hlifkpholllijblknnmbfagnkjneagid.crx 発見
+2025-02-18 20:20:16,217 - DEBUG - 拡張機能のあるPath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/chrome/hlifkpholllijblknnmbfagnkjneagid.crx
+2025-02-18 20:20:22,247 - DEBUG - chromeのインスタンス化に成功: flowSetupChrome
+2025-02-18 20:20:22,723 - DEBUG - 利用した変数一覧:
+{'args': (<method.base.selenium.chrome.ChromeManager object at 0x15aabed10>,), 'kwargs': {}, 'func': <function ChromeManager.flowSetupChrome at 0x10a01c160>, 'self': <method.base.decorators.decorators.Decorators object at 0x108079870>, 'result': <selenium.webdriver.chrome.webdriver.WebDriver (session="f9680d8ee1fc36d3253fad55d4f14ec6")>}
+2025-02-18 20:20:23,012 - INFO - 必須入力欄、すべて記載確認OK
+2025-02-18 20:20:23,013 - DEBUG - sub_dir_name: lgram_2
+2025-02-18 20:20:23,014 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:23,015 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:20:23,015 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:20:23,162 - DEBUG - file_id: 1SmME7KHrH5pP-LrwslUQtE38JF1wmHCw
+2025-02-18 20:20:23,163 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:23,164 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:20:23,165 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:20:23,342 - DEBUG - file_id: 1SmME7KHrH5pP-LrwslUQtE38JF1wmHCw
+2025-02-18 20:20:24,048 - DEBUG - file_name: 2_samnale.png
+mime_type: image/png
+2025-02-18 20:20:24,123 - DEBUG - only_extension: png
+2025-02-18 20:20:24,128 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:24,129 - WARNING - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_2/png/2_samnale.png
+2025-02-18 20:20:24,129 - DEBUG - FilePathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:20:24,129 - DEBUG - png 発見
+2025-02-18 20:20:24,129 - DEBUG - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_2/png/2_samnale.png
+2025-02-18 20:20:24,129 - WARNING - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_2/png/2_samnale.png
+2025-02-18 20:20:24,129 - DEBUG - download_file_pathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:20:24,129 - DEBUG - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_2/png/2_samnale.png
+2025-02-18 20:20:24,672 - DEBUG - chromeのインスタンス化に成功: flowSetupChrome
+2025-02-18 20:20:24,674 - DEBUG - chromeのインスタンス化に成功: flowSetupChrome
+2025-02-18 20:20:24,674 - DEBUG - 利用した変数一覧:
+{'args': (<method.base.selenium.chrome.ChromeManager object at 0x15ab19c00>,), 'kwargs': {}, 'func': <function ChromeManager.flowSetupChrome at 0x10a01c160>, 'self': <method.base.decorators.decorators.Decorators object at 0x108079870>, 'result': <selenium.webdriver.chrome.webdriver.WebDriver (session="68915a4ab7dce30869d3e0f96b6a61c7")>}
+2025-02-18 20:20:24,674 - DEBUG - 利用した変数一覧:
+{'args': (<method.base.selenium.chrome.ChromeManager object at 0x15aabff10>,), 'kwargs': {}, 'func': <function ChromeManager.flowSetupChrome at 0x10a01c160>, 'self': <method.base.decorators.decorators.Decorators object at 0x108079870>, 'result': <selenium.webdriver.chrome.webdriver.WebDriver (session="4ab18cad7939fb123e0f46940477f054")>}
+2025-02-18 20:20:24,968 - INFO - 必須入力欄、すべて記載確認OK
+2025-02-18 20:20:24,968 - DEBUG - sub_dir_name: lgram_3
+2025-02-18 20:20:24,969 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:24,969 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:20:24,969 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:20:25,041 - DEBUG - file_id: 1SmME7KHrH5pP-LrwslUQtE38JF1wmHCw
+2025-02-18 20:20:25,041 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:25,042 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:20:25,042 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:20:25,114 - INFO - 必須入力欄、すべて記載確認OK
+2025-02-18 20:20:25,115 - DEBUG - sub_dir_name: lgram_1
+2025-02-18 20:20:25,116 - DEBUG - file_id: 1SmME7KHrH5pP-LrwslUQtE38JF1wmHCw
+2025-02-18 20:20:25,130 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:25,130 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:20:25,130 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:20:25,204 - DEBUG - file_id: 1AiP6Czhd51PQD57NgY1dZ6uMZs-PJHbe
+2025-02-18 20:20:25,205 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:25,205 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:20:25,205 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:20:25,276 - DEBUG - file_id: 1AiP6Czhd51PQD57NgY1dZ6uMZs-PJHbe
+2025-02-18 20:20:25,766 - DEBUG - file_name: 2_samnale.png
+mime_type: image/png
+2025-02-18 20:20:25,766 - DEBUG - only_extension: png
+2025-02-18 20:20:25,767 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:25,767 - WARNING - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/png/2_samnale.png
+2025-02-18 20:20:25,767 - DEBUG - FilePathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:20:25,767 - DEBUG - png 発見
+2025-02-18 20:20:25,767 - DEBUG - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/png/2_samnale.png
+2025-02-18 20:20:25,767 - WARNING - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/png/2_samnale.png
+2025-02-18 20:20:25,767 - DEBUG - download_file_pathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:20:25,767 - DEBUG - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/png/2_samnale.png
+2025-02-18 20:20:25,819 - DEBUG - file_name: 1_samnale.png
+mime_type: image/png
+2025-02-18 20:20:25,819 - DEBUG - only_extension: png
+2025-02-18 20:20:25,820 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:25,820 - WARNING - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_1/png/1_samnale.png
+2025-02-18 20:20:25,820 - DEBUG - FilePathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:20:25,820 - DEBUG - png 発見
+2025-02-18 20:20:25,820 - DEBUG - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_1/png/1_samnale.png
+2025-02-18 20:20:25,820 - WARNING - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_1/png/1_samnale.png
+2025-02-18 20:20:25,821 - DEBUG - download_file_pathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:20:25,821 - DEBUG - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_1/png/1_samnale.png
+2025-02-18 20:20:27,345 - INFO - driveデータファイル書込完了: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_2/png/2_samnale.png
+2025-02-18 20:20:27,346 - DEBUG - sub_dir_name: lgram_2
+2025-02-18 20:20:27,347 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:27,347 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:20:27,347 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:20:27,436 - DEBUG - file_id: 1ewdehsIeVw_6xspsK5lKStdklxQ70xP3
+2025-02-18 20:20:27,436 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:27,436 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:20:27,436 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:20:27,508 - DEBUG - file_id: 1ewdehsIeVw_6xspsK5lKStdklxQ70xP3
+2025-02-18 20:20:28,068 - DEBUG - file_name: 2_reel.mp4
+mime_type: video/mp4
+2025-02-18 20:20:28,069 - DEBUG - only_extension: mp4
+2025-02-18 20:20:28,069 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:28,069 - WARNING - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_2/mp4/2_reel.mp4
+2025-02-18 20:20:28,069 - DEBUG - FilePathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:20:28,070 - DEBUG - mp4 発見
+2025-02-18 20:20:28,070 - DEBUG - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_2/mp4/2_reel.mp4
+2025-02-18 20:20:28,070 - WARNING - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_2/mp4/2_reel.mp4
+2025-02-18 20:20:28,070 - DEBUG - download_file_pathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:20:28,070 - DEBUG - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_2/mp4/2_reel.mp4
+2025-02-18 20:20:29,052 - INFO - driveデータファイル書込完了: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/png/2_samnale.png
+2025-02-18 20:20:29,053 - DEBUG - sub_dir_name: lgram_3
+2025-02-18 20:20:29,053 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:29,053 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:20:29,053 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:20:29,125 - DEBUG - file_id: 1ewdehsIeVw_6xspsK5lKStdklxQ70xP3
+2025-02-18 20:20:29,125 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:29,125 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:20:29,126 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:20:29,196 - DEBUG - file_id: 1ewdehsIeVw_6xspsK5lKStdklxQ70xP3
+2025-02-18 20:20:29,241 - INFO - driveデータファイル書込完了: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_1/png/1_samnale.png
+2025-02-18 20:20:29,241 - DEBUG - sub_dir_name: lgram_1
+2025-02-18 20:20:29,241 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:29,241 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:20:29,242 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:20:29,316 - DEBUG - file_id: 1to8tPP1fbjd4uAB-Tyd-TuEsiF938AYl
+2025-02-18 20:20:29,316 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:29,316 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:20:29,316 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:20:29,388 - DEBUG - file_id: 1to8tPP1fbjd4uAB-Tyd-TuEsiF938AYl
+2025-02-18 20:20:30,420 - DEBUG - file_name: 2_reel.mp4
+mime_type: video/mp4
+2025-02-18 20:20:30,420 - DEBUG - only_extension: mp4
+2025-02-18 20:20:30,423 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:30,423 - WARNING - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/mp4/2_reel.mp4
+2025-02-18 20:20:30,423 - DEBUG - FilePathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:20:30,423 - DEBUG - mp4 発見
+2025-02-18 20:20:30,423 - DEBUG - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/mp4/2_reel.mp4
+2025-02-18 20:20:30,423 - WARNING - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/mp4/2_reel.mp4
+2025-02-18 20:20:30,423 - DEBUG - download_file_pathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:20:30,423 - DEBUG - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/mp4/2_reel.mp4
+2025-02-18 20:20:30,435 - DEBUG - file_name: 1_reel.mp4
+mime_type: video/mp4
+2025-02-18 20:20:30,436 - DEBUG - only_extension: mp4
+2025-02-18 20:20:30,436 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:30,436 - WARNING - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_1/mp4/1_reel.mp4
+2025-02-18 20:20:30,436 - DEBUG - FilePathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:20:30,437 - DEBUG - mp4 発見
+2025-02-18 20:20:30,437 - DEBUG - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_1/mp4/1_reel.mp4
+2025-02-18 20:20:30,437 - WARNING - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_1/mp4/1_reel.mp4
+2025-02-18 20:20:30,437 - DEBUG - download_file_pathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:20:30,437 - DEBUG - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_1/mp4/1_reel.mp4
+2025-02-18 20:20:34,537 - INFO - driveデータファイル書込完了: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_2/mp4/2_reel.mp4
+2025-02-18 20:20:34,539 - INFO - 【lgram_2】準備完了
+2025-02-18 20:20:34,539 - INFO - image_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_2/png/2_samnale.png
+movie_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_2/mp4/2_reel.mp4
+2025-02-18 20:20:34,540 - DEBUG - login_info: {'LOGIN_URL': 'https://go.lgram.jp/', 'HOME_URL': 'https://go.lgram.jp/instagram/account-list', 'ID_BY': 'id', 'ID_VALUE': 'email_login', 'PASS_BY': 'id', 'PASS_VALUE': 'password_login', 'BTN_BY': 'id', 'BTN_VALUE': 'btn_submit_login', 'LOGIN_AFTER_ELEMENT_BY': 'id', 'LOGIN_AFTER_ELEMENT_VALUE': 'show-action-profile', '': ''}
+2025-02-18 20:20:34,540 - INFO - ********** openSite start **********
+2025-02-18 20:20:34,541 - DEBUG - 引数:
+args=(), kwargs={'login_url': 'https://go.lgram.jp/'}
+2025-02-18 20:20:36,892 - INFO - driveデータファイル書込完了: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/mp4/2_reel.mp4
+2025-02-18 20:20:36,894 - INFO - 【lgram_3】準備完了
+2025-02-18 20:20:36,894 - INFO - image_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/png/2_samnale.png
+movie_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/mp4/2_reel.mp4
+2025-02-18 20:20:36,894 - DEBUG - login_info: {'LOGIN_URL': 'https://go.lgram.jp/', 'HOME_URL': 'https://go.lgram.jp/instagram/account-list', 'ID_BY': 'id', 'ID_VALUE': 'email_login', 'PASS_BY': 'id', 'PASS_VALUE': 'password_login', 'BTN_BY': 'id', 'BTN_VALUE': 'btn_submit_login', 'LOGIN_AFTER_ELEMENT_BY': 'id', 'LOGIN_AFTER_ELEMENT_VALUE': 'show-action-profile', '': ''}
+2025-02-18 20:20:36,895 - INFO - ********** openSite start **********
+2025-02-18 20:20:36,895 - DEBUG - 引数:
+args=(), kwargs={'login_url': 'https://go.lgram.jp/'}
+2025-02-18 20:20:39,451 - INFO - driveデータファイル書込完了: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_1/mp4/1_reel.mp4
+2025-02-18 20:20:39,454 - INFO - 【lgram_1】準備完了
+2025-02-18 20:20:39,455 - INFO - image_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_1/png/1_samnale.png
+movie_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_1/mp4/1_reel.mp4
+2025-02-18 20:20:39,455 - DEBUG - login_info: {'LOGIN_URL': 'https://go.lgram.jp/', 'HOME_URL': 'https://go.lgram.jp/instagram/account-list', 'ID_BY': 'id', 'ID_VALUE': 'email_login', 'PASS_BY': 'id', 'PASS_VALUE': 'password_login', 'BTN_BY': 'id', 'BTN_VALUE': 'btn_submit_login', 'LOGIN_AFTER_ELEMENT_BY': 'id', 'LOGIN_AFTER_ELEMENT_VALUE': 'show-action-profile', '': ''}
+2025-02-18 20:20:39,455 - INFO - ********** openSite start **********
+2025-02-18 20:20:39,455 - DEBUG - 引数:
+args=(), kwargs={'login_url': 'https://go.lgram.jp/'}
+2025-02-18 20:20:40,170 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:40,170 - INFO - ********** inputId start **********
+2025-02-18 20:20:40,170 - DEBUG - 引数:
+args=(), kwargs={'by': 'id', 'value': 'email_login', 'inputText': 'aihakase@tatsu.uk'}
+2025-02-18 20:20:40,173 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:40,174 - INFO - ********** inputId start **********
+2025-02-18 20:20:40,174 - DEBUG - 引数:
+args=(), kwargs={'by': 'id', 'value': 'email_login', 'inputText': 'aihakase@tatsu.uk'}
+2025-02-18 20:20:40,337 - INFO - method.base.selenium.driverDeco Clickできる状態になってます
+2025-02-18 20:20:40,338 - INFO - ********** clickClearInput start **********
+2025-02-18 20:20:40,338 - DEBUG - 引数:
+args=(<method.base.selenium.get_element.GetElement object at 0x15ab19ff0>,), kwargs={'by': 'id', 'value': 'email_login', 'inputText': 'aihakase@tatsu.uk'}
+2025-02-18 20:20:40,338 - DEBUG - by: id
+2025-02-18 20:20:40,339 - INFO - method.base.selenium.driverDeco Clickできる状態になってます
+2025-02-18 20:20:40,339 - DEBUG - value: email_login
+2025-02-18 20:20:40,339 - INFO - ********** clickClearInput start **********
+2025-02-18 20:20:40,340 - DEBUG - 引数:
+args=(<method.base.selenium.get_element.GetElement object at 0x15ab1a9e0>,), kwargs={'by': 'id', 'value': 'email_login', 'inputText': 'aihakase@tatsu.uk'}
+2025-02-18 20:20:40,340 - DEBUG - by: id
+2025-02-18 20:20:40,340 - DEBUG - value: email_login
+2025-02-18 20:20:40,431 - INFO - method.base.selenium.driverDeco Clickできる状態になってます
+2025-02-18 20:20:40,496 - INFO - method.base.selenium.driverDeco Clickできる状態になってます
+2025-02-18 20:20:40,503 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:40,522 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:40,937 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:40,937 - INFO - clickClearInput result:
+<selenium.webdriver.remote.webelement.WebElement (session="68915a4ab7dce30869d3e0f96b6a61c7", element="f.C92CE4256933F716EC2536257B575A02.d.2E1ADD08A3DBD56B0BE9366D9FADA561.e.5")>
+2025-02-18 20:20:41,296 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:41,298 - INFO - clickClearInput result:
+<selenium.webdriver.remote.webelement.WebElement (session="f9680d8ee1fc36d3253fad55d4f14ec6", element="f.801D9BB53E9F87D91170DB5733B2A6C1.d.324B44E6A0583284AA08B7DCA0756A6A.e.215")>
+2025-02-18 20:20:41,298 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:41,298 - INFO - ********** inputId start **********
+2025-02-18 20:20:41,298 - DEBUG - 引数:
+args=(), kwargs={'by': 'id', 'value': 'email_login', 'inputText': 'tanakajiro@tatsu.uk'}
+2025-02-18 20:20:41,333 - INFO - method.base.selenium.driverDeco Clickできる状態になってます
+2025-02-18 20:20:41,334 - INFO - ********** clickClearInput start **********
+2025-02-18 20:20:41,334 - DEBUG - 引数:
+args=(<method.base.selenium.get_element.GetElement object at 0x15ac07fd0>,), kwargs={'by': 'id', 'value': 'email_login', 'inputText': 'tanakajiro@tatsu.uk'}
+2025-02-18 20:20:41,334 - DEBUG - by: id
+2025-02-18 20:20:41,335 - DEBUG - value: email_login
+2025-02-18 20:20:41,372 - INFO - method.base.selenium.driverDeco Clickできる状態になってます
+2025-02-18 20:20:41,382 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:42,085 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:42,088 - INFO - clickClearInput result:
+<selenium.webdriver.remote.webelement.WebElement (session="4ab18cad7939fb123e0f46940477f054", element="f.9611AFBB241599BFE1E1C46DFBA822D9.d.3BDA0AE8CE7D1AD1499D526F54F12BFF.e.215")>
+2025-02-18 20:20:42,955 - INFO - 入力に成功: aihakase@tatsu.uk
+2025-02-18 20:20:42,956 - INFO - ********** inputPass start **********
+2025-02-18 20:20:42,958 - DEBUG - 引数:
+args=(), kwargs={'by': 'id', 'value': 'password_login', 'inputText': 'kyoyu0000'}
+2025-02-18 20:20:42,974 - INFO - method.base.selenium.driverDeco Clickできる状態になってます
+2025-02-18 20:20:42,977 - INFO - ********** clickClearInput start **********
+2025-02-18 20:20:42,977 - DEBUG - 引数:
+args=(<method.base.selenium.get_element.GetElement object at 0x15ab1a9e0>,), kwargs={'by': 'id', 'value': 'password_login', 'inputText': 'kyoyu0000'}
+2025-02-18 20:20:42,977 - DEBUG - by: id
+2025-02-18 20:20:42,978 - DEBUG - value: password_login
+2025-02-18 20:20:43,003 - INFO - method.base.selenium.driverDeco Clickできる状態になってます
+2025-02-18 20:20:43,013 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:43,116 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:43,116 - INFO - clickClearInput result:
+<selenium.webdriver.remote.webelement.WebElement (session="68915a4ab7dce30869d3e0f96b6a61c7", element="f.C92CE4256933F716EC2536257B575A02.d.2E1ADD08A3DBD56B0BE9366D9FADA561.e.7")>
+2025-02-18 20:20:43,307 - INFO - 入力に成功: aihakase@tatsu.uk
+2025-02-18 20:20:43,307 - INFO - ********** inputPass start **********
+2025-02-18 20:20:43,307 - DEBUG - 引数:
+args=(), kwargs={'by': 'id', 'value': 'password_login', 'inputText': 'kyoyu0000'}
+2025-02-18 20:20:43,321 - INFO - method.base.selenium.driverDeco Clickできる状態になってます
+2025-02-18 20:20:43,321 - INFO - ********** clickClearInput start **********
+2025-02-18 20:20:43,321 - DEBUG - 引数:
+args=(<method.base.selenium.get_element.GetElement object at 0x15ab19ff0>,), kwargs={'by': 'id', 'value': 'password_login', 'inputText': 'kyoyu0000'}
+2025-02-18 20:20:43,321 - DEBUG - by: id
+2025-02-18 20:20:43,321 - DEBUG - value: password_login
+2025-02-18 20:20:43,331 - INFO - method.base.selenium.driverDeco Clickできる状態になってます
+2025-02-18 20:20:43,333 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:43,463 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:43,463 - INFO - clickClearInput result:
+<selenium.webdriver.remote.webelement.WebElement (session="f9680d8ee1fc36d3253fad55d4f14ec6", element="f.801D9BB53E9F87D91170DB5733B2A6C1.d.324B44E6A0583284AA08B7DCA0756A6A.e.224")>
+2025-02-18 20:20:44,111 - INFO - 入力に成功: tanakajiro@tatsu.uk
+2025-02-18 20:20:44,114 - INFO - ********** inputPass start **********
+2025-02-18 20:20:44,130 - DEBUG - 引数:
+args=(), kwargs={'by': 'id', 'value': 'password_login', 'inputText': 'kyoyu0000'}
+2025-02-18 20:20:44,145 - INFO - method.base.selenium.driverDeco Clickできる状態になってます
+2025-02-18 20:20:44,145 - INFO - ********** clickClearInput start **********
+2025-02-18 20:20:44,145 - DEBUG - 引数:
+args=(<method.base.selenium.get_element.GetElement object at 0x15ac07fd0>,), kwargs={'by': 'id', 'value': 'password_login', 'inputText': 'kyoyu0000'}
+2025-02-18 20:20:44,146 - DEBUG - by: id
+2025-02-18 20:20:44,146 - DEBUG - value: password_login
+2025-02-18 20:20:44,156 - INFO - method.base.selenium.driverDeco Clickできる状態になってます
+2025-02-18 20:20:44,159 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:44,219 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:44,219 - INFO - clickClearInput result:
+<selenium.webdriver.remote.webelement.WebElement (session="4ab18cad7939fb123e0f46940477f054", element="f.9611AFBB241599BFE1E1C46DFBA822D9.d.3BDA0AE8CE7D1AD1499D526F54F12BFF.e.224")>
+2025-02-18 20:20:45,129 - INFO - 入力に成功: kyoyu0000
+2025-02-18 20:20:45,130 - DEBUG - value: btn_submit_login
+2025-02-18 20:20:45,130 - DEBUG - by: id
+2025-02-18 20:20:45,130 - DEBUG - value: btn_submit_login
+2025-02-18 20:20:45,151 - INFO - method.base.selenium.driverDeco Clickできる状態になってます
+2025-02-18 20:20:45,154 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:45,204 - DEBUG - クリック完了しました: btn_submit_login
+2025-02-18 20:20:45,477 - INFO - 入力に成功: kyoyu0000
+2025-02-18 20:20:45,477 - DEBUG - value: btn_submit_login
+2025-02-18 20:20:45,477 - DEBUG - by: id
+2025-02-18 20:20:45,477 - DEBUG - value: btn_submit_login
+2025-02-18 20:20:45,497 - INFO - method.base.selenium.driverDeco Clickできる状態になってます
+2025-02-18 20:20:45,501 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:45,545 - DEBUG - クリック完了しました: btn_submit_login
+2025-02-18 20:20:46,238 - INFO - 入力に成功: kyoyu0000
+2025-02-18 20:20:46,239 - DEBUG - value: btn_submit_login
+2025-02-18 20:20:46,240 - DEBUG - by: id
+2025-02-18 20:20:46,240 - DEBUG - value: btn_submit_login
+2025-02-18 20:20:46,296 - INFO - method.base.selenium.driverDeco Clickできる状態になってます
+2025-02-18 20:20:46,308 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:46,484 - DEBUG - クリック完了しました: btn_submit_login
+2025-02-18 20:20:46,640 - INFO - 指定の要素が見つかりました
+2025-02-18 20:20:46,641 - INFO - 指定の要素が見つかりました
+2025-02-18 20:20:46,641 - INFO - 新しいページに移行しました: show-action-profile
+2025-02-18 20:20:46,641 - INFO - 新しいページに移行しました: show-action-profile
+2025-02-18 20:20:46,648 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:46,649 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:46,655 - DEBUG - method.base.selenium.driverWait ページが更新OK
+2025-02-18 20:20:46,657 - DEBUG - method.base.selenium.driverWait ページが更新OK
+2025-02-18 20:20:46,681 - INFO - 指定の要素が見つかりました
+2025-02-18 20:20:46,681 - INFO - 指定の要素が見つかりました
+2025-02-18 20:20:46,681 - INFO - method.base.selenium.loginWithId: ログインに成功
+2025-02-18 20:20:46,681 - INFO - method.base.selenium.loginWithId: ログインに成功
+2025-02-18 20:20:46,684 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:46,685 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:46,689 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:46,690 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:47,279 - DEBUG - クリック完了しました: .name-bot
+2025-02-18 20:20:47,280 - DEBUG - クリック完了しました: .name-bot
+2025-02-18 20:20:47,313 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:47,314 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:47,314 - WARNING - SingleProcess アカウント名をクリック: 実施済み
+2025-02-18 20:20:47,314 - WARNING - SingleProcess アカウント名をクリック: 実施済み
+2025-02-18 20:20:47,526 - INFO - 指定の要素が見つかりました
+2025-02-18 20:20:47,526 - INFO - 新しいページに移行しました: show-action-profile
+2025-02-18 20:20:47,528 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:47,530 - DEBUG - method.base.selenium.driverWait ページが更新OK
+2025-02-18 20:20:47,541 - INFO - 指定の要素が見つかりました
+2025-02-18 20:20:47,541 - INFO - method.base.selenium.loginWithId: ログインに成功
+2025-02-18 20:20:47,544 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:47,546 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:48,065 - DEBUG - クリック完了しました: .name-bot
+2025-02-18 20:20:48,067 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:48,068 - WARNING - SingleProcess アカウント名をクリック: 実施済み
+2025-02-18 20:20:50,752 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:50,782 - INFO - Facebookはログイン状態
+2025-02-18 20:20:50,786 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:50,788 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:51,116 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:51,133 - INFO - Facebookはログイン状態
+2025-02-18 20:20:51,136 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:51,138 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:51,838 - DEBUG - popupなどでClickができません: <selenium.webdriver.remote.webelement.WebElement (session="f9680d8ee1fc36d3253fad55d4f14ec6", element="f.801D9BB53E9F87D91170DB5733B2A6C1.d.B2BAA7F421763CD8E31245E5959A28AF.e.2493")>
+2025-02-18 20:20:51,852 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:51,852 - WARNING - AutoPostFlow 投稿機能を開く: 実施済み
+2025-02-18 20:20:52,188 - DEBUG - popupなどでClickができません: <selenium.webdriver.remote.webelement.WebElement (session="68915a4ab7dce30869d3e0f96b6a61c7", element="f.C92CE4256933F716EC2536257B575A02.d.53BA2A0B70788B191ABC645E9E42D121.e.53")>
+2025-02-18 20:20:52,198 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:52,198 - WARNING - AutoPostFlow 投稿機能を開く: 実施済み
+2025-02-18 20:20:52,623 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:52,851 - ERROR - SingleProcess facebook_comment: Facebookのログインができておりません。
+2025-02-18 20:20:52,853 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:52,855 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:20:52,855 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:20:53,301 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:53,303 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:53,317 - DEBUG - 要素があるんだけどクリックができません: <selenium.webdriver.remote.webelement.WebElement (session="68915a4ab7dce30869d3e0f96b6a61c7", element="f.C92CE4256933F716EC2536257B575A02.d.53BA2A0B70788B191ABC645E9E42D121.e.54")>
+2025-02-18 20:20:53,371 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:53,373 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:53,388 - DEBUG - 要素があるんだけどクリックができません: <selenium.webdriver.remote.webelement.WebElement (session="f9680d8ee1fc36d3253fad55d4f14ec6", element="f.801D9BB53E9F87D91170DB5733B2A6C1.d.B2BAA7F421763CD8E31245E5959A28AF.e.2482")>
+2025-02-18 20:20:53,979 - INFO - jsにてクリック実施: <selenium.webdriver.remote.webelement.WebElement (session="68915a4ab7dce30869d3e0f96b6a61c7", element="f.C92CE4256933F716EC2536257B575A02.d.53BA2A0B70788B191ABC645E9E42D121.e.54")>
+2025-02-18 20:20:53,981 - INFO - jsにてクリック実施: <selenium.webdriver.remote.webelement.WebElement (session="f9680d8ee1fc36d3253fad55d4f14ec6", element="f.801D9BB53E9F87D91170DB5733B2A6C1.d.B2BAA7F421763CD8E31245E5959A28AF.e.2482")>
+2025-02-18 20:20:53,984 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:53,984 - WARNING - AutoPostFlow 投稿作成をクリック: 実施済み
+2025-02-18 20:20:53,985 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:53,985 - WARNING - AutoPostFlow 投稿作成をクリック: 実施済み
+2025-02-18 20:20:54,754 - INFO - [['2025-02-18 20:20']]をZ2への書き込み完了
+2025-02-18 20:20:54,759 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:54,759 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:20:54,760 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:20:56,600 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:56,605 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:56,651 - DEBUG - クリック完了しました: //button//span[contains(text(), '投稿作成')]
+2025-02-18 20:20:56,653 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:56,653 - WARNING - AutoPostFlow ＋投稿をクリック: 実施済み
+2025-02-18 20:20:56,744 - INFO - [['Facebookのログインができておりません。']]をAA2への書き込み完了
+2025-02-18 20:20:56,745 - ERROR - SingleProcess エラー: Facebookのログインができておりません。
+2025-02-18 20:20:56,746 - INFO - 指定のファイルの削除を実施: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_1/png/1_samnale.png
+2025-02-18 20:20:56,747 - INFO - 指定のファイルの削除を実施: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_1/mp4/1_reel.mp4
+2025-02-18 20:20:56,748 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:56,801 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:56,873 - DEBUG - クリック完了しました: //button//span[contains(text(), '投稿作成')]
+2025-02-18 20:20:56,877 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:56,877 - WARNING - AutoPostFlow ＋投稿をクリック: 実施済み
+2025-02-18 20:20:57,000 - INFO - ********** flowSetupChrome start **********
+2025-02-18 20:20:57,000 - DEBUG - 引数:
+args=(<method.base.selenium.chrome.ChromeManager object at 0x15adb6aa0>,), kwargs={}
+2025-02-18 20:20:57,000 - WARNING - インストールされた ChromeDriver バージョン: Selenium Manager is managing the ChromeDriver.
+2025-02-18 20:20:57,000 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:57,001 - DEBUG - uBlock-Origin.crx 発見
+2025-02-18 20:20:57,001 - DEBUG - 拡張機能のあるPath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/chrome/uBlock-Origin.crx
+2025-02-18 20:20:57,001 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:20:57,001 - DEBUG - hlifkpholllijblknnmbfagnkjneagid.crx 発見
+2025-02-18 20:20:57,002 - DEBUG - 拡張機能のあるPath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/chrome/hlifkpholllijblknnmbfagnkjneagid.crx
+2025-02-18 20:20:57,962 - INFO - ********** clickClearInput start **********
+2025-02-18 20:20:57,963 - DEBUG - 引数:
+args=(<method.base.selenium.click_element.ClickElement object at 0x15ad89e70>,), kwargs={'by': 'css', 'value': "div.modal-body input[name='scenario_name']", 'inputText': '2025-02-18 20:20'}
+2025-02-18 20:20:57,966 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:58,039 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:58,039 - INFO - clickClearInput result:
+<selenium.webdriver.remote.webelement.WebElement (session="68915a4ab7dce30869d3e0f96b6a61c7", element="f.C92CE4256933F716EC2536257B575A02.d.8B4BEC9A79F81C3814B0F5C0CF615404.e.64")>
+2025-02-18 20:20:58,554 - WARNING - AutoPostFlow 管理名の入力（日付）: 実施済み
+2025-02-18 20:20:58,951 - INFO - ********** clickClearInput start **********
+2025-02-18 20:20:58,953 - DEBUG - 引数:
+args=(<method.base.selenium.click_element.ClickElement object at 0x15abe2e90>,), kwargs={'by': 'css', 'value': "div.modal-body input[name='scenario_name']", 'inputText': '2025-02-18 20:20'}
+2025-02-18 20:20:58,963 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:59,049 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:20:59,049 - INFO - clickClearInput result:
+<selenium.webdriver.remote.webelement.WebElement (session="f9680d8ee1fc36d3253fad55d4f14ec6", element="f.801D9BB53E9F87D91170DB5733B2A6C1.d.59D44953D45878427597BC7CA2ACA5E0.e.5070")>
+2025-02-18 20:20:59,567 - WARNING - AutoPostFlow 管理名の入力（日付）: 実施済み
+2025-02-18 20:21:00,745 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:21:00,748 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:21:00,789 - DEBUG - クリック完了しました: //div[@class='post-type-box-title'][p[text()='リールの投稿']]
+2025-02-18 20:21:00,791 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:21:00,791 - WARNING - AutoPostFlow リール投稿を選択: 実施済み
+2025-02-18 20:21:01,269 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:21:01,274 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:21:01,305 - DEBUG - クリック完了しました: //div[@class='post-type-box-title'][p[text()='リールの投稿']]
+2025-02-18 20:21:01,308 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:21:01,308 - WARNING - AutoPostFlow リール投稿を選択: 実施済み
+2025-02-18 20:21:03,360 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:21:03,364 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:21:03,722 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:21:03,724 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:21:04,091 - DEBUG - クリック完了しました: //button[contains(span/text(), '投稿編集へ進む')]
+2025-02-18 20:21:04,095 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:21:04,096 - WARNING - AutoPostFlow 投稿編集へ進む: 実施済み
+2025-02-18 20:21:04,385 - DEBUG - クリック完了しました: //button[contains(span/text(), '投稿編集へ進む')]
+2025-02-18 20:21:04,394 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:21:04,394 - WARNING - AutoPostFlow 投稿編集へ進む: 実施済み
+2025-02-18 20:21:06,044 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:21:06,046 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:21:06,046 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:21:06,207 - DEBUG - file_id: 1ewdehsIeVw_6xspsK5lKStdklxQ70xP3
+2025-02-18 20:21:06,250 - DEBUG - chromeのインスタンス化に成功: flowSetupChrome
+2025-02-18 20:21:06,250 - DEBUG - 利用した変数一覧:
+{'args': (<method.base.selenium.chrome.ChromeManager object at 0x15adb6aa0>,), 'kwargs': {}, 'func': <function ChromeManager.flowSetupChrome at 0x10a01c160>, 'self': <method.base.decorators.decorators.Decorators object at 0x108079870>, 'result': <selenium.webdriver.chrome.webdriver.WebDriver (session="54d3ce90b67a2ebd01e0db945d3d5413")>}
+2025-02-18 20:21:06,333 - INFO - 必須入力欄、すべて記載確認OK
+2025-02-18 20:21:06,333 - DEBUG - sub_dir_name: lgram_3
+2025-02-18 20:21:06,333 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:21:06,333 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:21:06,333 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:21:06,400 - DEBUG - file_id: 1SmME7KHrH5pP-LrwslUQtE38JF1wmHCw
+2025-02-18 20:21:06,402 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:21:06,402 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:21:06,402 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:21:06,470 - DEBUG - file_id: 1SmME7KHrH5pP-LrwslUQtE38JF1wmHCw
+2025-02-18 20:21:06,482 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:21:06,483 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:21:06,483 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:21:06,555 - DEBUG - file_id: 1ewdehsIeVw_6xspsK5lKStdklxQ70xP3
+2025-02-18 20:21:06,883 - DEBUG - file_name: 2_reel.mp4
+mime_type: video/mp4
+2025-02-18 20:21:06,883 - DEBUG - only_extension: mp4
+2025-02-18 20:21:06,884 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:21:06,884 - WARNING - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/mp4/2_reel.mp4
+2025-02-18 20:21:06,884 - DEBUG - FilePathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:21:06,884 - DEBUG - mp4 発見
+2025-02-18 20:21:06,884 - DEBUG - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/mp4/2_reel.mp4
+2025-02-18 20:21:06,884 - WARNING - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/mp4/2_reel.mp4
+2025-02-18 20:21:06,884 - DEBUG - download_file_pathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:21:06,884 - DEBUG - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/mp4/2_reel.mp4
+2025-02-18 20:21:06,896 - DEBUG - file_input: <selenium.webdriver.remote.webelement.WebElement (session="68915a4ab7dce30869d3e0f96b6a61c7", element="f.C92CE4256933F716EC2536257B575A02.d.291BE2820229E81743C0F3F82B92C329.e.104")>
+2025-02-18 20:21:06,919 - WARNING - AutoPostFlow 動画挿入: 実施済み
+2025-02-18 20:21:07,062 - DEBUG - file_name: 2_samnale.png
+mime_type: image/png
+2025-02-18 20:21:07,062 - DEBUG - only_extension: png
+2025-02-18 20:21:07,063 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:21:07,063 - WARNING - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/png/2_samnale.png
+2025-02-18 20:21:07,063 - DEBUG - FilePathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:21:07,063 - DEBUG - png 発見
+2025-02-18 20:21:07,063 - DEBUG - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/png/2_samnale.png
+2025-02-18 20:21:07,064 - WARNING - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/png/2_samnale.png
+2025-02-18 20:21:07,064 - DEBUG - download_file_pathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:21:07,064 - DEBUG - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/png/2_samnale.png
+2025-02-18 20:21:07,079 - DEBUG - file_name: 2_reel.mp4
+mime_type: video/mp4
+2025-02-18 20:21:07,079 - DEBUG - only_extension: mp4
+2025-02-18 20:21:07,079 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:21:07,079 - WARNING - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_2/mp4/2_reel.mp4
+2025-02-18 20:21:07,080 - DEBUG - FilePathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:21:07,080 - DEBUG - mp4 発見
+2025-02-18 20:21:07,080 - DEBUG - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_2/mp4/2_reel.mp4
+2025-02-18 20:21:07,080 - WARNING - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_2/mp4/2_reel.mp4
+2025-02-18 20:21:07,080 - DEBUG - download_file_pathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:21:07,080 - DEBUG - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_2/mp4/2_reel.mp4
+2025-02-18 20:21:07,095 - DEBUG - file_input: <selenium.webdriver.remote.webelement.WebElement (session="f9680d8ee1fc36d3253fad55d4f14ec6", element="f.801D9BB53E9F87D91170DB5733B2A6C1.d.7AFC82303E7F7A007485BC6F4C25DE0D.e.8169")>
+2025-02-18 20:21:07,113 - WARNING - AutoPostFlow 動画挿入: 実施済み
+2025-02-18 20:21:10,144 - INFO - driveデータファイル書込完了: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/png/2_samnale.png
+2025-02-18 20:21:10,148 - DEBUG - sub_dir_name: lgram_3
+2025-02-18 20:21:10,153 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:21:10,154 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:21:10,155 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:21:10,364 - DEBUG - file_id: 1ewdehsIeVw_6xspsK5lKStdklxQ70xP3
+2025-02-18 20:21:10,365 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:21:10,365 - DEBUG - sns-auto-430920-08274ad68b41.json 発見
+2025-02-18 20:21:10,365 - DEBUG - MacのDriverを選択: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/secret_key/sns-auto-430920-08274ad68b41.json
+2025-02-18 20:21:10,555 - DEBUG - file_id: 1ewdehsIeVw_6xspsK5lKStdklxQ70xP3
+2025-02-18 20:21:11,280 - DEBUG - file_name: 2_reel.mp4
+mime_type: video/mp4
+2025-02-18 20:21:11,281 - DEBUG - only_extension: mp4
+2025-02-18 20:21:11,282 - DEBUG - inputData: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData
+2025-02-18 20:21:11,282 - WARNING - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/mp4/2_reel.mp4
+2025-02-18 20:21:11,282 - DEBUG - FilePathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:21:11,282 - DEBUG - mp4 発見
+2025-02-18 20:21:11,282 - DEBUG - FilePath: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/mp4/2_reel.mp4
+2025-02-18 20:21:11,282 - WARNING - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/mp4/2_reel.mp4
+2025-02-18 20:21:11,282 - DEBUG - download_file_pathの型: <class 'pathlib.PosixPath'>
+2025-02-18 20:21:11,282 - DEBUG - download_file_path: /Users/nyanyacyan/Desktop/project_file/lgram_auto_processer/installer/src/method/inputData/lgram_3/mp4/2_reel.mp4
+2025-02-18 20:21:14,802 - INFO - 次の要素が確認できました。
+2025-02-18 20:21:14,805 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:21:14,808 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:21:14,906 - DEBUG - クリック完了しました: //button[contains(@class, 'btn-5799db-color') and contains(@class, 'btn-sm') and span[text()='画像を変更する']]
+2025-02-18 20:21:14,912 - DEBUG - method.base.selenium.driverDeco ページが更新OK
+2025-02-18 20:21:14,912 - WARNING - AutoPostFlow 画像を変更するをクリック: 実施済み
