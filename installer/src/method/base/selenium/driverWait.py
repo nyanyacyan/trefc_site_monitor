@@ -69,6 +69,7 @@ class Wait:
     # DOM上に存在するまで待機
 
     def canWaitDom(self, value: str, by: str = 'By.XPATH', timeout: int = 20) -> WebElement:# -> WebElements:# -> Any:
+        self.logger.debug(f'\nby: {by}\nvalue: {value}')
         element = WebDriverWait(self.chrome, timeout).until(
             EC.presence_of_element_located((by, value))
         )

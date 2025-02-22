@@ -1,6 +1,6 @@
 # coding: utf-8
 # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-# export PYTHONPATH="/Users/nyanyacyan/Desktop/project_file/LGRAM_auto_processer/installer/src"
+# export PYTHONPATH="/Users/nyanyacyan/Desktop/project_file/trefc_site_monitor/installer/src"
 
 # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 # import
@@ -20,21 +20,14 @@ from selenium.webdriver.support import expected_conditions as EC
 # 自作モジュール
 from method.base.utils.logger import Logger
 from method.base.selenium.chrome import ChromeManager
-from method.base.selenium.loginWithId import SingleSiteIDLogin
 from method.base.selenium.seleniumBase import SeleniumBasicOperations
 from method.base.spreadsheet.spreadsheetRead import GetDataGSSAPI
 from method.base.selenium.get_element import GetElement
 from method.base.decorators.decorators import Decorators
-from method.base.utils.time_manager import TimeManager
-from method.base.selenium.google_drive_download import GoogleDriveDownload
 from method.base.spreadsheet.spreadsheetWrite import GssWrite
-from method.base.spreadsheet.select_cell import GssSelectCell
-from method.base.spreadsheet.err_checker_write import GssCheckerErrWrite
-from method.base.selenium.loginWithId import SingleSiteIDLogin
-from method.base.utils.popup import Popup
 from method.base.selenium.click_element import ClickElement
 from method.base.selenium.driverWait import Wait
-from method.base.utils.fileWrite import
+from method.base.utils.fileWrite import FileWrite
 
 # flow
 
@@ -131,25 +124,33 @@ class SingleProcessFlow:
             self.random_sleep = SeleniumBasicOperations(chrome=self.chrome)
             self.selenium = SeleniumBasicOperations(chrome=self.chrome)
 
-            self.logger.debug(f'ID: {gss_info['id']}\nブランド名: {gss_info['brand_name']}\nurl: {gss_info['url']}')
+            self.logger.debug(f"ID: {gss_info['ID']}\nブランド名: {gss_info['brand_name']}\nurl: {gss_info['url']}")
 
             # サイトを開く
             self.chrome.get(gss_info['url'])
 
-
-            # サイトが開いているかを確認
-            self.element_wait.canWaitDom(by=self.const_by['ID'], value=self.const_element_info['OPEN_SITE_CHECK_ELEMENT_VALUE'])
-
             # display,noneの解除
             self.get_element.unlockDisplayNone()
 
+            self.element_wait.jsPageChecker(self.chrome, timeout=20)
+
+            # サイトが開いているかを確認
+            searchWord = self.get_element.getElement(by='id', value='searchWord')
+            self.logger.debug(f'searchWord: {searchWord}')
+
+            if not searchWord:
+                raise ValueError("サイトがみつかりません")
+
+
             # テーブルの取得
-            ul_elements = self.element_wait.canWaitDom(by=self.const_by['CSS'], value=self.const_element_info['UL_ELEMENT_VALUE'])
-            self.logger.info(f'ul_elements: {ul_elements}')
+            ul_element = self.get_element.getElement(by='css', value=self.const_element_info['UL_ELEMENT_VALUE'])
+            self.logger.info(f'ul_elements: {ul_element}')
+            self.element_wait.jsPageChecker(self.chrome, timeout=20)
 
             # １つ１つのアイテムを取得
-            li_elements = ul_elements.find_elements(self.const_by['CSS'], self.const_element_info['LI_ELEMENT_VALUE'])
+            li_elements = ul_element.find_elements(self.const_by['CSS'], self.const_element_info['LI_ELEMENT_VALUE'])
             self.logger.info(f"liの数: {len(li_elements)}")
+            self.element_wait.jsPageChecker(self.chrome, timeout=20)
 
             # NEWがついているものに絞り込む
             new_icon = [li for li in li_elements if li.find_elements(self.const_by['CSS'], self.const_element_info['NEW_ITEM_ELEMENT_VALUE'])]
@@ -167,7 +168,7 @@ class SingleProcessFlow:
                         "link" : li.find_element(self.const_by['TAG'], "a").text,  # リンク
                     }
                     item_data_list.append(item)
-                    self.logger.info(f'{gss_info['id']} をリストに追加')
+                    self.logger.info(f"{gss_info['id']} をリストに追加")
             else:
                 self.logger.warning(f'{self.__class__.__name__}new_iconがありません: {new_icon}')
 
@@ -217,6 +218,6 @@ class SingleProcessFlow:
 
 if __name__ == "__main__":
 
-    test_flow = SingleProcessFlow()
+    test_flow = Flow()
     # 引数入力
-    test_flow.single_process()
+    test_flow.flow()

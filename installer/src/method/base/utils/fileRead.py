@@ -6,7 +6,7 @@
 # import
 import os, json, yaml, cv2, zipfile, pickle
 import pandas as pd
-from PyPDF2 import PdfReader
+from pypdf import PdfReader
 from PIL import Image
 import aiofiles
 
