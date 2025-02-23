@@ -28,6 +28,7 @@ from method.base.spreadsheet.spreadsheetWrite import GssWrite
 from method.base.selenium.click_element import ClickElement
 from method.base.selenium.driverWait import Wait
 from method.base.utils.fileWrite import FileWrite
+from method.base.utils.path import BaseToPath
 
 # flow
 
@@ -55,6 +56,7 @@ class Flow:
         # インスタンス
         self.gss_read = GetDataGSSAPI()
         self.gss_write = GssWrite()
+
 
         # 各Flow
         self.single_flow = SingleProcessFlow()
@@ -99,6 +101,7 @@ class SingleProcessFlow:
         # インスタンス
         self.gss_read = GetDataGSSAPI()
         self.gss_write = GssWrite()
+        self.path = BaseToPath()
 
         # 各Flow
 
@@ -175,7 +178,8 @@ class SingleProcessFlow:
             self.logger.critical(f'{self.__class__.__name__} item_data_list: {item_data_list}')
 
             # 過去のpickleからデータを取得
-
+            pickle_path = self._pickle_path(file_name=gss_info['ID'])
+            
 
             # 突合する
 
@@ -212,6 +216,16 @@ class SingleProcessFlow:
         else:
             self.logger.error(f'{self.__class__.__name__} ファイルが存在しません: {file_path}')
 
+    # ----------------------------------------------------------------------------------
+    # picklePath(ファイルがなかったら空のファイルを作成)
+
+    def _pickle_path(self, file_name: str):
+        return self.path._get_pickle_path(file_name=file_name)
+
+    # ----------------------------------------------------------------------------------
+
+
+    # ----------------------------------------------------------------------------------
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # テスト実施

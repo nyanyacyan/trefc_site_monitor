@@ -5,7 +5,7 @@
 # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 # import
-import os, platform
+import os, platform, pickle
 from pathlib import Path
 from datetime import datetime
 
@@ -323,12 +323,18 @@ class BaseToPath:
     # ----------------------------------------------------------------------------------
     # Input > pickle > file
 
-    def _get_pickle_path(self, sub_dir_name: str, file_name: str, extension: str='.pkl'):
+    def _get_pickle_path(self, file_name: str, extension: str='.pkl'):
         inputDataPath = self.getInputDataPath()
-        chrome_dir_path = inputDataPath / "pickles" / sub_dir_name / file_name
-        self.isDirExists(path=chrome_dir_path)
-        self.logger.debug(f'MacのDriverを選択: {chrome_dir_path}')
-        return str(chrome_dir_path)
+        pkl_path = inputDataPath / "pickles" / file_name + extension
+        self.isDirExists(path=pkl_path)
+
+        if not pkl_path.exists():
+            self.logger.warning(f'{self.__class__.__name__} {file_name}{extension} がないため新規作成')
+            with open(pkl_path, "wb") as f:
+                pickle.dump({}, f)
+
+        self.logger.debug(f'MacのDriverを選択: {pkl_path}')
+        return str(pkl_path)
 
 
     # ----------------------------------------------------------------------------------
@@ -434,18 +440,9 @@ class BaseToPath:
     # ----------------------------------------------------------------------------------
     # resultOutput > 0101 > 0101.pkl
 
-    def writePicklesFileDateNamePath(
-        self,
-        extension: str = Extension.pickle.value,
-        subDirName: str = SubDir.pickles.value,
-    ):
+    def writePicklesFileDateNamePath( self, extension: str = Extension.pickle.value, subDirName: str = SubDir.pickles.value, ):
         resultOutputPath = self.getResultOutputPath()
-        pickleFullPath = (
-            resultOutputPath
-            / subDirName
-            / self.currentDate
-            / f"{self.currentDate}{extension}"
-        )
+        pickleFullPath = ( resultOutputPath / subDirName / self.currentDate / f"{self.currentDate}{extension}" )
         self.isDirExists(path=pickleFullPath)
         self.logger.debug(f"pickleFullPath: {pickleFullPath}")
         return pickleFullPath
