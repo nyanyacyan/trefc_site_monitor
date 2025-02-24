@@ -43,13 +43,14 @@ class ElementInfo(Enum):
         "UL_ELEMENT_VALUE": ".p-itemlist",
         "LI_ELEMENT_VALUE": ".p-itemlist_item",
         "BRAND_NAME_ELEMENT_VALUE": ".p-itemlist_brand",
-        "BRAND_PRICE_ELEMENT_VALUE": ".p-price2_b",
         "NEW_ITEM_ELEMENT_VALUE": ".p-itemlist_guideT",
         "DATA_ID_ELEMENT_VALUE": "data-id",
         "LIKE_ELEMENT_VALUE": ".p-itemlist_fav",
         "BRAND_SIZE_ELEMENT_VALUE": ".p-itemlist_size",
-        "": "",
-        "": "",
+
+        # 価格
+        "BRAND_PRICE_ELEMENT_VALUE": ".p-price2_a",
+        "BRAND_SALE_PRICE_ELEMENT_VALUE": ".p-price2_b",
         "": "",
         "": "",
         "": "",

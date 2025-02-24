@@ -185,13 +185,22 @@ class SingleProcessFlow:
             # NEWが入っているものの詳細を取得
             new_item_data_list = []
             if new_icon_element_list:
+
                 # item_infoを取得
                 for new_icon_element in new_icon_element_list:
+
                     # 各要素の取得
                     brand_name_element = self.get_element.filterElement(parentElement=new_icon_element, by='css', value=self.const_element_info['BRAND_NAME_ELEMENT_VALUE'])
                     size_element = self.get_element.filterElement(parentElement=new_icon_element, by='css', value=self.const_element_info['BRAND_SIZE_ELEMENT_VALUE'])
-                    price_element = self.get_element.filterElement(parentElement=new_icon_element, by='css', value=self.const_element_info['BRAND_PRICE_ELEMENT_VALUE'])
                     link_element = self.get_element.filterElement(parentElement=new_icon_element, by='tag', value='a')
+
+                    try:
+                        price_element = self.get_element.filterElement(parentElement=new_icon_element, by='css', value=self.const_element_info['BRAND_PRICE_ELEMENT_VALUE'])
+
+                    except NoSuchElementException:
+                        self.logger.warning(f'{self.__class__.__name__} SALE対象品の価格')
+                        price_element = self.get_element.filterElement(parentElement=new_icon_element, by='css', value=self.const_element_info['BRAND_SALE_PRICE_ELEMENT_VALUE'])
+
 
                     # 各要素から必要情報を取得
                     item = {
