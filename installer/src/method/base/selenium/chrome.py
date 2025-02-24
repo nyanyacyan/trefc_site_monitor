@@ -139,7 +139,7 @@ class ChromeManager:
 
         chromeOptions = Options()
 
-        # chromeOptions.add_argument("--headless=new")  # ヘッドレスモードで実行
+        chromeOptions.add_argument("--headless=new")  # ヘッドレスモードで実行
         # chromeOptions.add_argument(f"--window-position=0,0")
         # chromeOptions.add_argument(f"--window-position={self.x},{self.y}")
         chromeOptions.add_argument("--window-size=840,600")  # ウィンドウサイズの指定
