@@ -537,8 +537,9 @@ class ChromeHandler:
             "[Chromeを正しく起動できませんでした。PCの再起動が必要です。再起動でも改善されない場合には作成者にご連絡下さい]",
         )
         self.logger.error(f"{errorMessage}: {e}")
+        raise Exception(f"Chromeエラー: {e}")
 
-        self.popup.popupCommentChoice(popupTitle=popupTitle, comment=comment, func=func)
+        # self.popup.popupCommentChoice(popupTitle=popupTitle, comment=comment, func=func)
 
 
 # ----------------------------------------------------------------------------------

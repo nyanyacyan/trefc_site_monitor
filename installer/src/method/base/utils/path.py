@@ -326,6 +326,7 @@ class BaseToPath:
     def _get_pickle_path(self, file_name: str, extension: str='.pkl'):
         inputDataPath = self.getInputDataPath()
         pkl_dir_path = inputDataPath / "pickles"
+        self.isDirExists(path=pkl_dir_path)  #なければ作成する
 
         pkl_file_path = pkl_dir_path / f"{file_name}{extension}"
 

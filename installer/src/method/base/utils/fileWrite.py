@@ -132,7 +132,7 @@ class FileWrite:
     # pickle
     # ? picklesのディレクトリに入れたい場合にはoverrideさせていれる
 
-    @decoInstance.fileRetryAction(maxRetry=2, delay=2)
+    # @decoInstance.fileRetryAction(maxRetry=2, delay=2)
     def write_pickle_input(self, data: Any, pickle_file_path: str):
         with open(pickle_file_path, "wb") as file:
             pickle.dump(data, file)

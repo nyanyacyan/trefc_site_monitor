@@ -1,6 +1,6 @@
 # coding: utf-8
 # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-# export PYTHONPATH="/Users/nyanyacyan/Desktop/project_file/trefc_site_monitor/installer/src"
+# export PYTHONPATH="/Users/nyanyacyan/Desktop/Project_file/trefc_site_monitor/installer/src"
 
 # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 # import
@@ -15,6 +15,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from pathlib import Path
 
 
 # 自作モジュール
@@ -212,29 +213,32 @@ class SingleProcessFlow:
 
             # 突合する
             if set(map(str, new_item_data_list)) == set(map(str, old_list)):
-                self.logger.warning(f"{gss_info['ID']} 新商品入荷はありません")
+                self.logger.warning(f"{gss_info['ID']} - {gss_info['brand_name']} 新商品入荷はありません")
                 return
 
             else:
-                self.logger.critical(f"{gss_info['ID']} 新商品入荷してます。")
+                self.logger.critical(f"{gss_info['ID']} - {gss_info['brand_name']} 新商品入荷してます。")
+
                 # 差分があった場合
-                diff_list = [item for item in new_item_data_list if item not in old_list]
+                diff_list = [item for item in new_item_data_list if not any(item == old_item for old_item in old_list)]
+                self.logger.info(f'新しい商品情報リスト: {diff_list}')
 
                 # pickleに保存する
-                self.file_write.write_pickle_input(data=diff_list, pickle_file_path=pickle_file_path)
+                self.file_write.write_pickle_input(data=diff_list, pickle_file_path=Path(pickle_file_path))
 
                 # メッセージ用に変換する
                 item_msg_list = []
                 for i, diff_data in enumerate(diff_list):
-                    msg = f"{i}, {diff_data['brand_name']}\n{diff_data['item_name']}\n{diff_data['size']}\n{diff_data['price']}\n{diff_data['link']}\n"
+                    msg = f"{i + 1}, {diff_data['brand_name']}\n{diff_data['size']}\n{diff_data['price']}\n{diff_data['link']}\n"
                     item_msg_list.append(msg)
 
                 # すべてのmsgを結合
                 main_msg = "\n\n".join(item_msg_list)
 
                 # Discordにて送る
-                opening_msg = f"■ 新しい商品が入荷しました ■ \n\n-------- {diff_data['id']} --------\n\n"
+                opening_msg = f"■ 新しい商品が入荷しました ■ \n\n-------- {gss_info['ID']} - {gss_info['brand_name']} --------\n\n"
                 all_msg = f"{opening_msg}{main_msg}"
+                self.logger.info(f'送信msg: {all_msg}')
 
                 self.discord.discord_notify(message=all_msg)
 
