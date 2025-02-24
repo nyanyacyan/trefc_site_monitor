@@ -27,8 +27,10 @@ from method.base.decorators.decorators import Decorators
 from method.base.spreadsheet.spreadsheetWrite import GssWrite
 from method.base.selenium.click_element import ClickElement
 from method.base.selenium.driverWait import Wait
+from method.base.utils.fileRead import InputDataFileRead
 from method.base.utils.fileWrite import FileWrite
 from method.base.utils.path import BaseToPath
+from method.base.notify.notify import DiscordNotify
 
 # flow
 
@@ -102,6 +104,9 @@ class SingleProcessFlow:
         self.gss_read = GetDataGSSAPI()
         self.gss_write = GssWrite()
         self.path = BaseToPath()
+        self.file_read = InputDataFileRead()
+        self.file_write = FileWrite()
+        self.discord = DiscordNotify()
 
         # 各Flow
 
@@ -133,17 +138,19 @@ class SingleProcessFlow:
             self.chrome.get(gss_info['url'])
 
             # display,noneの解除
-            self.get_element.unlockDisplayNone()
+            # self.get_element.unlockDisplayNone()
 
             self.element_wait.jsPageChecker(self.chrome, timeout=20)
 
             # サイトが開いているかを確認
             searchWord = self.get_element.getElement(by='id', value='searchWord')
-            self.logger.debug(f'searchWord: {searchWord}')
+            self.logger.debug(f'サイトは開けてます: {searchWord}')
 
             if not searchWord:
                 raise ValueError("サイトがみつかりません")
 
+            by_css = self.const_by['CSS']
+            self.logger.debug(f'by_css: {by_css}')
 
             # テーブルの取得
             ul_element = self.get_element.getElement(by='css', value=self.const_element_info['UL_ELEMENT_VALUE'])
@@ -151,47 +158,77 @@ class SingleProcessFlow:
             self.element_wait.jsPageChecker(self.chrome, timeout=20)
 
             # １つ１つのアイテムを取得
-            li_elements = ul_element.find_elements(self.const_by['CSS'], self.const_element_info['LI_ELEMENT_VALUE'])
+            li_xpath = self.const_element_info['LI_ELEMENT_VALUE']
+            self.logger.debug(f'li_xpath: {li_xpath}')
+            self.get_element.filterElements(parentElement=ul_element, by='css', value=li_xpath)
+            li_elements = ul_element.find_elements(By.CSS_SELECTOR, ".p-itemlist_item")
             self.logger.info(f"liの数: {len(li_elements)}")
             self.element_wait.jsPageChecker(self.chrome, timeout=20)
 
-            # NEWがついているものに絞り込む
-            new_icon = [li for li in li_elements if li.find_elements(self.const_by['CSS'], self.const_element_info['NEW_ITEM_ELEMENT_VALUE'])]
+            try:
+                new_icon_exists_list = []
+                for li in li_elements:
+                    # iconの入っている用をにフィルタリング
+                    icon_box_element = self.get_element.filterElement(parentElement=li, by='css', value=self.const_element_info['NEW_ITEM_ELEMENT_VALUE'])
+                    # icon_boxに入っているtextが"NEW"になっているものだけに厳選
+                    icon_text= icon_box_element.text
+                    if "NEW" == icon_text:
+                        # 対象のWebElementのみ追加
+                        new_icon_exists_list.append(li)
 
-            item_data_list = []
-            if new_icon:
+                self.logger.info(f'[NEW]のアイコン商品: {len(new_icon_exists_list)} つあります。')
+            except NoSuchElementException:
+                self.logger.warning(f"{gss_info['ID']} new_iconがありません(新商品なし)")
+                return
 
+            # NEWが入っているものの詳細を取得
+            new_item_data_list = []
+            if new_icon_exists_list:
                 # item_infoを取得
-                for li in new_icon:
+                for li in new_icon_exists_list:
                     item = {
-                        "id" : gss_info['id'],  # ブランド名の取得
-                        "brand_name" : li.find_element(self.const_by['CSS'], self.const_element_info['BRAND_NAME_ELEMENT_VALUE']).text,  # サイズの取得
-                        "size" : li.find_element(self.const_by['CSS'], self.const_element_info['BRAND_SIZE_ELEMENT_VALUE']).text,  # サイズの取得
-                        "price" : li.find_element(self.const_by['CSS'], self.const_element_info['BRAND_PRICE_ELEMENT_VALUE']),  # 価格取得
-                        "link" : li.find_element(self.const_by['TAG'], "a").text,  # リンク
+                        "id" : gss_info['ID'],  # ブランド名の取得
+                        "brand_name" : self.get_element.filterElement(parentElement=li_elements, by='css', value=self.const_element_info['BRAND_NAME_ELEMENT_VALUE']).text,  # サイズの取得
+                        "size" : self.get_element.filterElement(parentElement=li_elements, by='css', value=self.const_element_info['BRAND_SIZE_ELEMENT_VALUE']).text,  # サイズの取得
+                        "price" : self.get_element.filterElement(parentElement=li_elements, by='css', value=self.const_element_info['BRAND_PRICE_ELEMENT_VALUE']),  # 価格取得
+                        "link" : self.get_element.filterElement(parentElement=li_elements, by='tag', value='a').text,  # リンク
                     }
-                    item_data_list.append(item)
-                    self.logger.info(f"{gss_info['id']} をリストに追加")
-            else:
-                self.logger.warning(f'{self.__class__.__name__}new_iconがありません: {new_icon}')
+                    new_item_data_list.append(item)
+                    self.logger.info(f"{gss_info['ID']} をリストに追加")
 
-            self.logger.critical(f'{self.__class__.__name__} item_data_list: {item_data_list}')
+            self.logger.critical(f'{self.__class__.__name__} new_item_data_list: {new_item_data_list}')
 
             # 過去のpickleからデータを取得
-            pickle_path = self._pickle_path(file_name=gss_info['ID'])
-            
+            pickle_file_path = self._pickle_path(file_name=gss_info['ID'])
+            old_list = self.file_read.read_pickle_input(pickle_file_path=pickle_file_path)
 
             # 突合する
+            if set(map(str, new_item_data_list)) == set(map(str, old_list)):
+                self.logger.warning(f"{gss_info['ID']} 新商品入荷はありません")
+                return
 
-            # 差分のリストを作成（新商品の入荷）
+            else:
+                self.logger.critical(f"{gss_info['ID']} 新商品入荷してます。")
+                # 差分があった場合
+                diff_list = [item for item in new_item_data_list if item not in old_list]
 
-            # pickleに保存する
+                # pickleに保存する
+                self.file_write.write_pickle_input(data=diff_list, pickle_file_path=pickle_file_path)
 
-            # メッセージ用に変換する
+                # メッセージ用に変換する
+                item_msg_list = []
+                for i, diff_data in enumerate(diff_list):
+                    msg = f"{i}, {diff_data['brand_name']}\n{diff_data['item_name']}\n{diff_data['size']}\n{diff_data['price']}\n{diff_data['link']}\n"
+                    item_msg_list.append(msg)
 
-            # Discordにて送る
+                # すべてのmsgを結合
+                main_msg = "\n\n".join(item_msg_list)
 
+                # Discordにて送る
+                opening_msg = f"■ 新しい商品が入荷しました ■ \n\n-------- {diff_data['id']} --------\n\n"
+                all_msg = f"{opening_msg}{main_msg}"
 
+                self.discord.discord_notify(message=all_msg)
 
 
         except TimeoutError:
@@ -201,7 +238,7 @@ class SingleProcessFlow:
             self.logger.error(f'{self.__class__.__name__} エラー: {e}')
 
         finally:
-
+            self.logger.info(f" {gss_info['ID']} 処理完了")
             # ✅ Chrome を終了
             self.chrome.quit()
 

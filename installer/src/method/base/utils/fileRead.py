@@ -233,7 +233,16 @@ class InputDataFileRead:
             zip.extractall(zipName)
 
 
-# ----------------------------------------------------------------------------------
+    # ----------------------------------------------------------------------------------
+    # pickleの読込
+
+    def read_pickle_input(self, pickle_file_path: str):
+        with open(pickle_file_path, "rb") as file:
+            data = pickle.load(file)
+            self.logger.debug(f"Loaded data from pickle: {data}")
+            return data
+
+    # ----------------------------------------------------------------------------------
 # **********************************************************************************
 
 

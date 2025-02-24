@@ -129,6 +129,17 @@ class FileWrite:
             self._existsCheck(fullPath=fullPath)
 
     # ----------------------------------------------------------------------------------
+    # pickle
+    # ? picklesのディレクトリに入れたい場合にはoverrideさせていれる
+
+    @decoInstance.fileRetryAction(maxRetry=2, delay=2)
+    def write_pickle_input(self, data: Any, pickle_file_path: str):
+        with open(pickle_file_path, "wb") as file:
+            pickle.dump(data, file)
+
+        self._existsCheck(fullPath=pickle_file_path)
+
+    # ----------------------------------------------------------------------------------
     # excel
 
     @decoInstance.fileRetryAction(maxRetry=2, delay=2)
