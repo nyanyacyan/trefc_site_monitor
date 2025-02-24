@@ -325,16 +325,17 @@ class BaseToPath:
 
     def _get_pickle_path(self, file_name: str, extension: str='.pkl'):
         inputDataPath = self.getInputDataPath()
-        pkl_path = inputDataPath / "pickles" / file_name + extension
-        self.isDirExists(path=pkl_path)
+        pkl_dir_path = inputDataPath / "pickles"
 
-        if not pkl_path.exists():
+        pkl_file_path = pkl_dir_path / f"{file_name}{extension}"
+
+        if not pkl_file_path.exists():
             self.logger.warning(f'{self.__class__.__name__} {file_name}{extension} がないため新規作成')
-            with open(pkl_path, "wb") as f:
+            with open(pkl_file_path, "wb") as f:
                 pickle.dump({}, f)
 
-        self.logger.debug(f'MacのDriverを選択: {pkl_path}')
-        return str(pkl_path)
+        self.logger.debug(f'MacのDriverを選択: {pkl_file_path}')
+        return str(pkl_file_path)
 
 
     # ----------------------------------------------------------------------------------

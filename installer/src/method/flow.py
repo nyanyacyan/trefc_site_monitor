@@ -166,7 +166,7 @@ class SingleProcessFlow:
             self.element_wait.jsPageChecker(self.chrome, timeout=20)
 
             try:
-                new_icon_exists_list = []
+                new_icon_element_list = []
                 for li in li_elements:
                     # iconの入っている用をにフィルタリング
                     icon_box_element = self.get_element.filterElement(parentElement=li, by='css', value=self.const_element_info['NEW_ITEM_ELEMENT_VALUE'])
@@ -174,27 +174,35 @@ class SingleProcessFlow:
                     icon_text= icon_box_element.text
                     if "NEW" == icon_text:
                         # 対象のWebElementのみ追加
-                        new_icon_exists_list.append(li)
+                        new_icon_element_list.append(li)
 
-                self.logger.info(f'[NEW]のアイコン商品: {len(new_icon_exists_list)} つあります。')
+                self.logger.info(f'[NEW]のアイコン商品: {len(new_icon_element_list)} つあります。')
             except NoSuchElementException:
                 self.logger.warning(f"{gss_info['ID']} new_iconがありません(新商品なし)")
                 return
 
             # NEWが入っているものの詳細を取得
             new_item_data_list = []
-            if new_icon_exists_list:
+            if new_icon_element_list:
                 # item_infoを取得
-                for li in new_icon_exists_list:
+                for new_icon_element in new_icon_element_list:
+                    # 各要素の取得
+                    brand_name_element = self.get_element.filterElement(parentElement=new_icon_element, by='css', value=self.const_element_info['BRAND_NAME_ELEMENT_VALUE'])
+                    size_element = self.get_element.filterElement(parentElement=new_icon_element, by='css', value=self.const_element_info['BRAND_SIZE_ELEMENT_VALUE'])
+                    price_element = self.get_element.filterElement(parentElement=new_icon_element, by='css', value=self.const_element_info['BRAND_PRICE_ELEMENT_VALUE'])
+                    link_element = self.get_element.filterElement(parentElement=new_icon_element, by='tag', value='a')
+
+                    # 各要素から必要情報を取得
                     item = {
                         "id" : gss_info['ID'],  # ブランド名の取得
-                        "brand_name" : self.get_element.filterElement(parentElement=li_elements, by='css', value=self.const_element_info['BRAND_NAME_ELEMENT_VALUE']).text,  # サイズの取得
-                        "size" : self.get_element.filterElement(parentElement=li_elements, by='css', value=self.const_element_info['BRAND_SIZE_ELEMENT_VALUE']).text,  # サイズの取得
-                        "price" : self.get_element.filterElement(parentElement=li_elements, by='css', value=self.const_element_info['BRAND_PRICE_ELEMENT_VALUE']),  # 価格取得
-                        "link" : self.get_element.filterElement(parentElement=li_elements, by='tag', value='a').text,  # リンク
+                        "brand_name" : brand_name_element.text,  # サイズの取得
+                        "size" : size_element.text,  # サイズの取得
+                        "price" : price_element.text,  # 価格取得
+                        "link" : link_element.get_attribute("href"),  # リンク
                     }
+                    # 取得した情報をリストに格納
                     new_item_data_list.append(item)
-                    self.logger.info(f"{gss_info['ID']} をリストに追加")
+                    self.logger.info(f"{gss_info['ID']} をリストに追加\n{item}")
 
             self.logger.critical(f'{self.__class__.__name__} new_item_data_list: {new_item_data_list}')
 
