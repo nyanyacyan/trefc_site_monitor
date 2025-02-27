@@ -6,15 +6,15 @@
 # import
 
 # flow
-from method.flow import FlowProcess
+from method.flow import Flow
 
 
 # ----------------------------------------------------------------------------------
 # **********************************************************************************
 
 def main():
-    main_flow = FlowProcess()
-    main_flow.parallel_process()
+    main_flow = Flow()
+    main_flow.process()
 
 # **********************************************************************************
 

@@ -5,16 +5,10 @@
 # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 # import
 import os
-import concurrent.futures
 from typing import Dict
 from datetime import datetime
-from selenium.common.exceptions import ElementClickInterceptedException, ElementNotInteractableException, NoSuchElementException, TimeoutException, WebDriverException
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from pathlib import Path
 
 
@@ -73,7 +67,7 @@ class Flow:
 # **********************************************************************************
     # ----------------------------------------------------------------------------------
 
-    def flow(self):
+    def process(self):
 
         # スプシにアクセス（Worksheet指定）
         df = self.gss_read._get_df_gss_url(gss_info=self.const_gss_info)
@@ -233,7 +227,7 @@ class SingleProcessFlow:
                 self.logger.info(f'新しい商品情報リスト: {diff_list}')
 
                 # pickleに保存する
-                self.file_write.write_pickle_input(data=diff_list, pickle_file_path=Path(pickle_file_path))
+                self.file_write.write_pickle_input(data=new_item_data_list, pickle_file_path=Path(pickle_file_path))
 
                 # メッセージ用に変換する
                 item_msg_list = []
@@ -292,4 +286,4 @@ if __name__ == "__main__":
 
     test_flow = Flow()
     # 引数入力
-    test_flow.flow()
+    test_flow.process()
