@@ -5,7 +5,7 @@
 # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 # import
 import os
-from typing import Dict
+from typing import Dict, List
 from datetime import datetime
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
@@ -214,17 +214,26 @@ class SingleProcessFlow:
             pickle_file_path = self._pickle_path(file_name=gss_info['ID'])
             old_list = self.file_read.read_pickle_input(pickle_file_path=pickle_file_path)
 
+            diff_list = []
+
             # 突合する
             if set(map(str, new_item_data_list)) == set(map(str, old_list)):
                 self.logger.warning(f"{gss_info['ID']} - {gss_info['brand_name']} 新商品入荷はありません")
                 return
 
             else:
-                self.logger.critical(f"{gss_info['ID']} - {gss_info['brand_name']} 新商品入荷してます。")
-
+                self.logger.warning(f'{self.__class__.__name__} diff_listの中身を確認: {diff_list}')
                 # 差分があった場合
                 diff_list = [item for item in new_item_data_list if not any(item == old_item for old_item in old_list)]
                 self.logger.info(f'新しい商品情報リスト: {diff_list}')
+
+                if self.is_only_whitespace(diff_list):
+                    self.logger.warning(f"{gss_info['ID']} - {gss_info['brand_name']} 新商品入荷はありません")
+                    return
+
+                else:
+                    self.logger.critical(f"{gss_info['ID']} - {gss_info['brand_name']} 新商品入荷してます。")
+
 
                 # pickleに保存する
                 self.file_write.write_pickle_input(data=new_item_data_list, pickle_file_path=Path(pickle_file_path))
@@ -275,6 +284,14 @@ class SingleProcessFlow:
         return self.path._get_pickle_path(file_name=file_name)
 
     # ----------------------------------------------------------------------------------
+
+
+    def is_only_whitespace(self, lst: List):
+        """
+        リスト内の要素がすべて空白・改行・タブ・全角スペースのみかを判定
+        """
+        return all(isinstance(item, str) and item.strip().replace("　", "") == "" for item in lst)
+
 
 
     # ----------------------------------------------------------------------------------
