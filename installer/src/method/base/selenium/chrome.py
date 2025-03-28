@@ -61,9 +61,9 @@ class ChromeManager:
         cache_path = os.path.expanduser("~/.wdm")
         if os.path.exists(cache_path):
             shutil.rmtree(cache_path, ignore_errors=True)
-            print(f"キャッシュを削除しました: {cache_path}")
+            self.logger.debug(f"キャッシュを削除しました: {cache_path}")
         else:
-            print(f"キャッシュディレクトリが見つかりません: {cache_path}")
+            self.logger.debug(f"キャッシュディレクトリが見つかりません: {cache_path}")
 
     # ----------------------------------------------------------------------------------
 

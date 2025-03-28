@@ -20,12 +20,17 @@ fi
 
 # `ec2-user` で `main.py` を実行
 cd /home/ec2-user/trefc_site_monitor/installer/src || { echo "$(date) - Failed to change directory"; exit 1; }
-python main.py >> $LOG_FILE 2>&1 &
+python main.py &
 MAIN_PID=$!
 echo "$(date) - MAIN_PID: $MAIN_PID"
 
+if ! ps -p $MAIN_PID > /dev/null; then
+    echo "$(date) - ERROR: プロセスが見つかりません！"
+    exit 1
+fi
+echo "$(date) - プロセスが正常に開始されました。PID: $MAIN_PID"
 
-# 1時間待機
+# 30分待機
 START_TIME=$(date +%s)
 while true; do
     CURRENT_TIME=$(date +%s)
@@ -33,9 +38,9 @@ while true; do
 
     echo "$(date) - 経過時間: $ELAPSED_TIME 秒"
 
-    if [ $ELAPSED_TIME -ge 3600 ]; then
-        echo "$(date) - 1時間が経過。インスタンスを停止します..."
-        timeout 60 aws ec2 stop-instances --instance-ids i-0353932a750e61ecf
+    if [ $ELAPSED_TIME -ge 1800 ]; then
+        echo "$(date) - 30分が経過。インスタンスを停止します..."
+        timeout 60 aws ec2 stop-instances --instance-ids i-070bbbe489226569a 2>&1
         if [ $? -eq 0 ]; then
             echo "$(date) - インスタンスの停止に成功しました。"
         else
@@ -46,7 +51,7 @@ while true; do
 
     if ! kill -0 $MAIN_PID 2>/dev/null; then
         echo "$(date) - メインスクリプトが終了。インスタンスを停止します..."
-        timeout 60 aws ec2 stop-instances --instance-ids i-0353932a750e61ecf
+        timeout 60 aws ec2 stop-instances --instance-ids i-070bbbe489226569a 2>&1
         if [ $? -eq 0 ]; then
             echo "$(date) - インスタンスの停止に成功しました。"
         else
